@@ -4,7 +4,7 @@
   "description": "the server for linx",
   "main": "src/index.ts",
   "scripts": {
-    "start": "node dist/server/src/index.js",
+    "start": "node dist/src/index.js",
     "dev": "ts-node src/index.ts",
     "build": "tsc",
     "knex:migrate:make": "knex migrate:make -x ts",
