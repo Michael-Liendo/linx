@@ -1,5 +1,16 @@
 {
   "files": [],
+  "compilerOptions": {
+    "baseUrl": "../",
+    "paths": {
+      "$lib/shared/*": [
+        "libs/shared/src/*"
+      ],
+      "$lib/shared": [
+        "libs/shared/src/"
+      ]
+    }
+  },
   "references": [
     {
       "path": "./tsconfig.app.json"
