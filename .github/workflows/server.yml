@@ -1,0 +1,42 @@
+name: Server
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+concurrency:
+  group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    env:
+      workdir: ./server
+
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        working-directory: ${{ env.workdir }}
+        run: npm install
+
+      - name: Lint Check
+        working-directory: ${{ env.workdir }}
+        run: npm run lint
+
+      - name: Build Check
+        working-directory: ${{ env.workdir }}
+        env:
+          NODE_ENV: production
+          PORT: 3000
+        run: npm run build
