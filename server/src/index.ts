@@ -6,7 +6,6 @@ import Fastify from 'fastify';
 
 import database from './repository/database';
 import routes from './routes';
-import { IUserForLogin } from '@linx/shared';
 
 // Instantiate Fastify with some config
 const fastify = Fastify();
