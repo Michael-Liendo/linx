@@ -1,8 +1,7 @@
 {
-  "name": "shared",
+  "name": "@linx/shared",
   "version": "0.0.1",
-  "main": "index.js",
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "main": "src/index.ts",
+  "author": "Michael Liendo",
+  "license": "MIT"
 }
