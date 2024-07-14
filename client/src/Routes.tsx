@@ -22,9 +22,9 @@ export function Routes() {
   );
 }
 
-/* const _PrivateRoutes: JSX.Element[] = [];
+const _PrivateRoutes: JSX.Element[] = [];
 
-const _AuthRoutes: JSX.Element[] = []; */
+const _AuthRoutes: JSX.Element[] = [];
 
 const PublicRoutes = [
   <Route
