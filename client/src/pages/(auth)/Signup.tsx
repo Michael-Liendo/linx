@@ -7,7 +7,7 @@ export default function Signup() {
       <div className="flex justify-center items-center z-20">
         <div className="w-full">
           <h1 className="text-6xl text-center font-bold text-white mb-16">
-            TownHall
+            Linx
           </h1>
           <form className="w-96">
             <TextField className="w-full" name="name" placeholder="Name" />
