@@ -1,5 +1,5 @@
-import Home from './pages/home';
 import { Routes as ReactRoutes, Route } from 'react-router';
+import Home from './pages/home';
 
 export enum PublicRoutesEnum {
   Home = '/',
