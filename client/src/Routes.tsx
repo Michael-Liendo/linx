@@ -1,13 +1,14 @@
 import { Routes as ReactRoutes, Route } from 'react-router';
 import Home from './pages/home';
+import Signup from './pages/(auth)/Login';
 
 export enum PublicRoutesEnum {
   Home = '/',
 }
 
 export enum AuthRoutesEnum {
-  Login = '/login',
-  SignUp = '/signup',
+  login = '/login',
+  Signup = '/signup',
   Welcome = '/welcome',
 }
 
@@ -16,15 +17,24 @@ export enum PrivateRoutesEnum {}
 export function Routes() {
   return (
     <ReactRoutes>
-      {/* {user ? PrivateRoutes.map((route) => route) : AuthRoutes.map((route) => route)} */}
+      {/* biome-ignore lint/correctness/noConstantCondition: remove when is ready the user state */}
+      {true
+        ? PrivateRoutes.map((route) => route)
+        : AuthRoutes.map((route) => route)}
       {PublicRoutes.map((route) => route)}
     </ReactRoutes>
   );
 }
 
-const _PrivateRoutes: JSX.Element[] = [];
+const PrivateRoutes: JSX.Element[] = [];
 
-const _AuthRoutes: JSX.Element[] = [];
+const AuthRoutes: JSX.Element[] = [
+  <Route
+    key={AuthRoutesEnum.Signup}
+    path={AuthRoutesEnum.Signup}
+    Component={Signup}
+  />,
+];
 
 const PublicRoutes = [
   <Route
