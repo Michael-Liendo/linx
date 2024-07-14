@@ -1,6 +1,6 @@
 import { Routes as ReactRoutes, Route } from 'react-router';
 import Home from './pages/home';
-import Signup from './pages/(auth)/Login';
+import Signup from './pages/(auth)/Signup';
 
 export enum PublicRoutesEnum {
   Home = '/',
@@ -18,7 +18,7 @@ export function Routes() {
   return (
     <ReactRoutes>
       {/* biome-ignore lint/correctness/noConstantCondition: remove when is ready the user state */}
-      {true
+      {false
         ? PrivateRoutes.map((route) => route)
         : AuthRoutes.map((route) => route)}
       {PublicRoutes.map((route) => route)}
