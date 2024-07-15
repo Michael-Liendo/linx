@@ -1,19 +1,26 @@
 import cn from 'classnames';
+
 export default function TextField({
   id,
   name,
   label,
   className,
   placeholder,
+  containerClassNames,
+  labelClassNames,
   type = 'text',
   disabled,
+  required,
   onChange,
   value,
 }: InputProps) {
   return (
-    <>
+    <div className={containerClassNames}>
       <label
-        className="block mb-2 text-sm font-medium text-gray-900"
+        className={cn(
+          'block mb-2 text-sm font-medium text-gray-900',
+          labelClassNames,
+        )}
         htmlFor={id}
       >
         {label}
@@ -24,6 +31,7 @@ export default function TextField({
         placeholder={placeholder}
         disabled={disabled}
         value={value}
+        required={required}
         onChange={(e) => {
           onChange?.(e.target.value);
         }}
@@ -33,7 +41,7 @@ export default function TextField({
         )}
         type={type}
       />
-    </>
+    </div>
   );
 }
 
@@ -45,6 +53,9 @@ interface InputProps {
   onChange?: (value: string) => void;
   label?: string;
   value?: string;
-  type?: 'text' | 'password';
+  type?: 'text' | 'email' | 'password';
+  required?: boolean;
   disabled?: boolean;
+  containerClassNames?: string;
+  labelClassNames?: string;
 }
