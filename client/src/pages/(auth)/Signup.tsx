@@ -1,6 +1,7 @@
 import { type FormEvent, useState } from 'react';
 import Button from '../../components/Button';
 import TextField from '../../components/TextField';
+import Services from '../../services';
 
 export default function Signup() {
   const [name, setName] = useState('');
@@ -8,8 +9,25 @@ export default function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  function handleSubmit(event: FormEvent) {
+  async function handleSubmit(event: FormEvent) {
     event.preventDefault();
+
+    if (!name || !lastName || !email || !password) {
+      return alert('Please complete the fields!');
+    }
+
+    try {
+      const results = await Services.auth.register({
+        first_name: name,
+        last_name: lastName,
+        email,
+        password,
+      });
+
+      console.log(results);
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   return (
@@ -20,7 +38,10 @@ export default function Signup() {
           <h1 className="text-6xl text-center font-bold text-white mb-16">
             Linx
           </h1>
-          <form className="w-96 bg-slate-200 rounded-xl py-4 px-4 space-y-2">
+          <form
+            onSubmit={handleSubmit}
+            className="w-96 bg-slate-200 rounded-xl py-4 px-4 space-y-2"
+          >
             <div className="flex justify-center w-full items-center space-x-3">
               <TextField
                 className="w-full"
