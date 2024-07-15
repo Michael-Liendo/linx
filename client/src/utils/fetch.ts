@@ -5,7 +5,7 @@ const Fetch = () => {
     if (token) {
       defaultOptions.Authorization = token;
     }
-    const apiUrl = `${import.meta.env.VITE_API_URL}/${url}`;
+    const apiUrl = `${import.meta.env.VITE_API_URL}/api${url}`;
     const requestOptions = {
       ...options,
       headers: new Headers({

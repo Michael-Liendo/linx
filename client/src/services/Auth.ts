@@ -4,7 +4,8 @@ import fetch from '../utils/fetch';
 export default class Auth {
   static async register(data: IUserForRegister) {
     try {
-      const request = await fetch('/register', {
+      const request = await fetch('/auth/register', {
+        method: 'POST',
         body: JSON.stringify(data),
       });
 
