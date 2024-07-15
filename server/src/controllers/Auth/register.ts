@@ -1,7 +1,6 @@
 import validator from 'validator';
 
-import Auth from '../../services/Auth';
-
+import Services from '../../services';
 import { Reply, Request } from '../../types';
 import { BadRequestError } from '../../utils/errorHandler';
 
@@ -24,7 +23,7 @@ export default async function register(request: Request, reply: Reply) {
   }
 
   try {
-    const user = await Auth.register({
+    const user = await Services.auth.register({
       first_name,
       last_name,
       email,
