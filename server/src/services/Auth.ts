@@ -1,8 +1,9 @@
 import { User } from '../repository/User';
 import { hashPassword } from '../utils/password';
+import Repository from '../repository';
+import { BadRequestError } from '../utils/errorHandler';
 
 import type { IUserForLogin, IUserForRegister } from '@linx/shared';
-import { BadRequestError } from '../utils/errorHandler';
 
 export default class Auth {
   // biome-ignore lint/correctness/noUnusedVariables: todo: remove this
@@ -28,7 +29,7 @@ export default class Auth {
       password: hashedPassword,
     };
 
-    const id = await User.createUser(registeredUser);
+    const id = await Repository.user.createUser(registeredUser);
 
     return id;
   }
