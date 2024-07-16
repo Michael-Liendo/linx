@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import jwt, { JwtPayload } from 'jsonwebtoken';
 import { UnauthorizedError } from './errorHandler';
 
 export class Jwt {
@@ -14,10 +14,10 @@ export class Jwt {
     });
   }
 
-  static verifyToken(token: string) {
+  static verifyToken(token: string): JwtPayload {
     try {
       const userToken = jwt.verify(token, process.env.JWT_PRIVATE_KEY);
-      return userToken;
+      return userToken as JwtPayload;
     } catch (_error) {
       throw new UnauthorizedError('INVALID_TOKEN');
     }
