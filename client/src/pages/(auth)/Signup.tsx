@@ -1,6 +1,7 @@
 import { type FormEvent, useState } from 'react';
 import Button from '../../components/Button';
 import TextField from '../../components/TextField';
+import useAuth from '../../hooks/Auth';
 import Services from '../../services';
 
 export default function Signup() {
@@ -8,6 +9,8 @@ export default function Signup() {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const { setToken } = useAuth();
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
@@ -23,8 +26,8 @@ export default function Signup() {
         email,
         password,
       });
-
       console.log(results);
+      setToken(results.data.token);
     } catch (e) {
       console.error(e);
     }
