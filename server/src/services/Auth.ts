@@ -1,6 +1,6 @@
-import { comparePassword, hashPassword } from '../utils/password';
 import Repository from '../repository';
 import { BadRequestError, UnauthorizedError } from '../utils/errorHandler';
+import { comparePassword, hashPassword } from '../utils/password';
 
 import type { IUserForLogin, IUserForRegister } from '@linx/shared';
 import { Jwt } from '../utils/jwt';
