@@ -1,20 +1,34 @@
-import { User } from '../repository/User';
-import { hashPassword } from '../utils/password';
+import { comparePassword, hashPassword } from '../utils/password';
 import Repository from '../repository';
-import { BadRequestError } from '../utils/errorHandler';
+import { BadRequestError, UnauthorizedError } from '../utils/errorHandler';
 
 import type { IUserForLogin, IUserForRegister } from '@linx/shared';
+import { Jwt } from '../utils/jwt';
 
 export default class Auth {
-  // biome-ignore lint/correctness/noUnusedVariables: todo: remove this
   static async login(data: IUserForLogin) {
-    //  todo: implement login
+    const { password, ...user } = await Repository.user.getUserByEmail(
+      data.email,
+    );
+
+    if (!user) {
+      throw new UnauthorizedError('UnauthorizedError');
+    }
+
+    const isCorrectPassword = await comparePassword(data.password, password);
+
+    if (!isCorrectPassword) {
+      throw new UnauthorizedError('UnauthorizedError');
+    }
+
+    const jwt = await Jwt.createToken(user);
+    return jwt;
   }
 
   static async register(data: IUserForRegister) {
     const { first_name, last_name, email, password } = data;
 
-    const user = await User.getUserByEmail(email);
+    const user = await Repository.user.getUserByEmail(email);
 
     if (user) {
       throw new BadRequestError('Select another email');
@@ -31,6 +45,11 @@ export default class Auth {
 
     const id = await Repository.user.createUser(registeredUser);
 
-    return id;
+    const token = await this.login({
+      email: data.email,
+      password: data.password,
+    });
+
+    return { id, token };
   }
 }
