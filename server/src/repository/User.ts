@@ -2,6 +2,11 @@ import { IUser, IUserForRegister } from '@linx/shared';
 import database from './database';
 
 export class User {
+  /**
+   *  getUserByEmail - get a user with the email
+   * @param id string
+   * @returns string IUser
+   */
   static async getUserByEmail(email: string): Promise<IUser | null> {
     const user = await database('users').where({ email }).first();
     return user;
