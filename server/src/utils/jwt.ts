@@ -2,11 +2,11 @@ import jwt from 'jsonwebtoken';
 import { UnauthorizedError } from './errorHandler';
 
 export class Jwt {
-  static createToken(payload: string) {
+  static createToken(payload: object): Promise<string> {
     return new Promise((resolve, reject) => {
-      jwt.sign(payload, process.env.JWT_PRIVATE_KEY, (error, token) => {
+      jwt.sign(payload, process.env.JWT_PRIVATE_KEY, (error, token: string) => {
         if (error) {
-          reject('error when creating token');
+          reject(error);
         } else {
           resolve(token);
         }
