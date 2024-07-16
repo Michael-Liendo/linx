@@ -20,7 +20,7 @@ async function checkJwt(request: Request) {
   }
 
   try {
-    const jwt = token.split(' ').pop();
+    const jwt = token;
     const payload = Jwt.verifyToken(`${jwt}`);
     const user = await Services.user.getByID(payload.id);
 

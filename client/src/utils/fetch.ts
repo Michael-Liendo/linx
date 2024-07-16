@@ -1,7 +1,7 @@
 const Fetch = () => {
   return async (url: string, options?: RequestInit) => {
     const defaultOptions: { Authorization?: string } = {};
-    const token = '';
+    const token = localStorage.getItem('token');
     if (token) {
       defaultOptions.Authorization = token;
     }
