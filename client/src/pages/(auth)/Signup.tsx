@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { type FormEvent, useState } from 'react';
 import Button from '../../components/Button';
 import TextField from '../../components/TextField';
@@ -11,6 +12,7 @@ export default function Signup() {
   const [password, setPassword] = useState('');
 
   const { setToken } = useAuth();
+  const navigate = useNavigate();
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
@@ -28,6 +30,7 @@ export default function Signup() {
       });
       console.log(results);
       setToken(results.data.token);
+      navigate('/home');
     } catch (e) {
       console.error(e);
     }
