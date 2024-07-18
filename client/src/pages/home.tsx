@@ -1,7 +1,10 @@
+import Layout from '../components/Layout-Home';
+import Navbar from '../components/Navbar';
 export default function Home() {
   return (
     <>
-      <h1 className="text-black text-4xl">Home</h1>
+      <Navbar />
+      <Layout />
     </>
   );
 }
