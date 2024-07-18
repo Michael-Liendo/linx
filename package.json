@@ -1,4 +1,27 @@
 {
   "name": "linx",
-  "workspaces": ["client/", "shared/", "server/"]
+  "workspaces": ["client/", "shared/", "server/"],
+  "scripts": {
+    "client:start": "cd client && vite preview",
+    "server:start": "cd server && node dist/src/index.js",
+
+    "build": "npm run build --ws",
+    "client:build": "npm run build -w @linx/client",
+    "server:build": "npm run build -w @linx/server",
+
+    "client:dev": "npm run dev -w @linx/client",
+    "server:dev": "npm run dev -w @linx/server",
+
+    "lint": "npm run lint --ws",
+    "format": "npm run format --ws",
+    "format:unsafe": "npm run format:unsafe --ws",
+
+    "client:lint": "npm run lint -w @linx/client",
+    "client:format": "npm run format -w @linx/client",
+    "client:format:unsafe": "npm run format:unsafe -w @linx/client",
+
+    "server:lint": "npm run lint -w @linx/server",
+    "server:format": "npm run format -w @linx/server",
+    "server:format:unsafe": "npm run format:unsafe -w @linx/server"
+  }
 }
