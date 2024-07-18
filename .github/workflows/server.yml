@@ -31,4 +31,4 @@ jobs:
         env:
           NODE_ENV: production
           PORT: 3000
-        run: npm run build:server
+        run: npm run server:build
