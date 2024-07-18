@@ -1,8 +1,8 @@
 import { Routes as ReactRoutes, Route } from 'react-router';
 import useAuth from './hooks/Auth';
+import Login from './pages/(auth)/Login';
 import Signup from './pages/(auth)/Signup';
 import Home from './pages/home';
-import Login from './pages/(auth)/Login';
 
 export enum PublicRoutesEnum {
   Home = '/',

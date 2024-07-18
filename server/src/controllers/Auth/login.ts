@@ -1,10 +1,10 @@
-import validator from 'validator';
 import { IUserForLogin } from '@linx/shared';
+import validator from 'validator';
 import { BadRequestError } from '../../utils/errorHandler';
 
-import type { Reply } from '../../types';
 import type { FastifyRequest } from 'fastify';
 import Services from '../../services';
+import type { Reply } from '../../types';
 
 export default async function login(request: FastifyRequest, reply: Reply) {
   const { email, password } = request.body as IUserForLogin;
