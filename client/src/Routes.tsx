@@ -2,6 +2,7 @@ import { Routes as ReactRoutes, Route } from 'react-router';
 import useAuth from './hooks/Auth';
 import Signup from './pages/(auth)/Signup';
 import Home from './pages/home';
+import Login from './pages/(auth)/Login';
 
 export enum PublicRoutesEnum {
   Home = '/',
@@ -34,6 +35,11 @@ const AuthRoutes: JSX.Element[] = [
     key={AuthRoutesEnum.Signup}
     path={AuthRoutesEnum.Signup}
     Component={Signup}
+  />,
+  <Route
+    key={AuthRoutesEnum.login}
+    path={AuthRoutesEnum.login}
+    Component={Login}
   />,
 ];
 
