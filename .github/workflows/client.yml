@@ -26,5 +26,5 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Build Check
+      - name: Client Build Check
         run: npm run client:build

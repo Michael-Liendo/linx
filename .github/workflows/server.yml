@@ -27,7 +27,7 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Build Check
+      - name: Server Build Check
         env:
           NODE_ENV: production
           PORT: 3000
