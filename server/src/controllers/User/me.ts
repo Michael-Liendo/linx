@@ -1,7 +1,6 @@
-import { Reply, Request } from '../../types';
+import type { Reply, Request } from '../../types';
 
 export default async function me(request: Request, reply: Reply) {
-  // biome-ignore lint/correctness/noUnusedVariables: <explanation>
   const { password, ...user } = request.user;
   try {
     return reply.code(200).send({ message: 'Ok', data: { user } });

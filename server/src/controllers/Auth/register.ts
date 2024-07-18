@@ -1,7 +1,7 @@
 import validator from 'validator';
 
 import Services from '../../services';
-import { Reply, Request } from '../../types';
+import type { Reply, Request } from '../../types';
 import { BadRequestError } from '../../utils/errorHandler';
 
 import type { IUserForRegister } from '@linx/shared';

@@ -1,7 +1,10 @@
 import { StatusCodes } from 'http-status-codes';
 
 export abstract class ErrorWithDetails extends Error {
-  constructor(message?: string, public details?: unknown) {
+  constructor(
+    message?: string,
+    public details?: unknown,
+  ) {
     super(message);
   }
   abstract statusCode: StatusCodes;

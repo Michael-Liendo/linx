@@ -1,4 +1,4 @@
-import { IUser } from '@linx/shared';
+import type { IUser } from '@linx/shared';
 import Repository from '../repository';
 
 export default class User {
