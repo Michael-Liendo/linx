@@ -1,4 +1,4 @@
-name: Client
+name: Lint
 
 on:
   push:
@@ -11,9 +11,10 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
-    name: Build
+  lint:
+    name: Lint Code
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Source
         uses: actions/checkout@v3
@@ -26,5 +27,5 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Build Check
-        run: npm run client:build
+      - name: Lint Check
+        run: npm run lint
