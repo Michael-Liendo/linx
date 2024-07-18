@@ -22,6 +22,8 @@
 
     "server:lint": "npm run lint -w @linx/server",
     "server:format": "npm run format -w @linx/server",
-    "server:format:unsafe": "npm run format:unsafe -w @linx/server"
+    "server:format:unsafe": "npm run format:unsafe -w @linx/server",
+
+    "server:migrations:up": "npm run migrations:up -w @linx/server"
   }
 }
