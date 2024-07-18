@@ -1,4 +1,4 @@
-import { IUserForLogin } from '@linx/shared';
+import type { IUserForLogin } from '@linx/shared';
 import validator from 'validator';
 import { BadRequestError } from '../../utils/errorHandler';
 

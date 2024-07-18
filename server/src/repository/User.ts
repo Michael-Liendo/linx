@@ -1,4 +1,4 @@
-import { IUser, IUserForRegister } from '@linx/shared';
+import type { IUser, IUserForRegister } from '@linx/shared';
 import database from './database';
 
 export class User {

@@ -1,7 +1,7 @@
 import type { DoneFuncWithErrOrRes, FastifyInstance } from 'fastify';
 import fastifyPlugin from 'fastify-plugin';
 import Services from '../services';
-import { Request } from '../types';
+import type { Request } from '../types';
 import { UnauthorizedError } from '../utils/errorHandler';
 import { Jwt } from '../utils/jwt';
 
