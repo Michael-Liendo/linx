@@ -1,0 +1,12 @@
+services:
+  linx-database:
+    image: 'postgres:16-alpine'
+    ports:
+      - '5432:5432'
+    volumes:
+      - linx-database:/var/lib/postgresql/data
+    env_file:
+      - .env
+
+volumes:
+  linx-database:

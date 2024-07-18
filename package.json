@@ -1,0 +1,4 @@
+{
+  "name": "linx",
+  "workspaces": ["client/", "shared/", "server/"]
+}
