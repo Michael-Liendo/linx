@@ -7,22 +7,26 @@ export abstract class ErrorWithDetails extends Error {
   ) {
     super(message);
   }
-  abstract statusCode: StatusCodes;
+  abstract statusCode;
 }
 
 export class BadRequestError extends ErrorWithDetails {
+  name = 'BAD_REQUEST';
   statusCode = StatusCodes.BAD_REQUEST;
-  details = 'You need add';
 }
 export class ConflictError extends ErrorWithDetails {
+  name = 'CONFLICT';
   statusCode = StatusCodes.CONFLICT;
 }
 export class ForbiddenError extends ErrorWithDetails {
+  name = 'FORBIDDEN';
   statusCode = StatusCodes.FORBIDDEN;
 }
 export class NotFoundError extends ErrorWithDetails {
+  name = 'NOT_FOUND';
   statusCode = StatusCodes.NOT_FOUND;
 }
 export class UnauthorizedError extends ErrorWithDetails {
+  name = 'UNAUTHORIZED';
   statusCode = StatusCodes.UNAUTHORIZED;
 }
