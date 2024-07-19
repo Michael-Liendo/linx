@@ -1,13 +1,12 @@
 import auth from './auth';
 import user from './user';
 
-import type { ErrorWithDetails } from '../utils/errorHandler';
 import type {
   DoneFuncWithErrOrRes,
-  FastifyError,
   FastifyInstance,
   RegisterOptions,
 } from 'fastify';
+import type { ErrorWithDetails } from '../utils/errorHandler';
 
 export default function routes(
   fastify: FastifyInstance,
