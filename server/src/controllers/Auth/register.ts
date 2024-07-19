@@ -22,19 +22,12 @@ export default async function register(request: Request, reply: Reply) {
     throw new BadRequestError('Password must be at least 4 characters long');
   }
 
-  try {
-    const user = await Services.auth.register({
-      first_name,
-      last_name,
-      email,
-      password,
-    });
+  const user = await Services.auth.register({
+    first_name,
+    last_name,
+    email,
+    password,
+  });
 
-    return reply.code(201).send({ message: 'User created', data: { ...user } });
-  } catch (error) {
-    return reply.code(500).send({
-      message: 'Internal server error',
-      error: error.message as string,
-    });
-  }
+  return reply.code(201).send({ message: 'User created', data: { ...user } });
 }

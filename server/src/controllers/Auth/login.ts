@@ -18,19 +18,12 @@ export default async function login(request: FastifyRequest, reply: Reply) {
     throw new BadRequestError('Please provide a valid email address');
   }
 
-  try {
-    const user = await Services.auth.login({
-      email,
-      password,
-    });
+  const user = await Services.auth.login({
+    email,
+    password,
+  });
 
-    return reply
-      .code(201)
-      .send({ message: 'User created', data: { token: user } });
-  } catch (error) {
-    return reply.code(error).send({
-      message: 'Internal server error',
-      error: error.message as string,
-    });
-  }
+  return reply
+    .code(201)
+    .send({ message: 'User created', data: { token: user } });
 }
