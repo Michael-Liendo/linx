@@ -1,10 +1,10 @@
 import validator from 'validator';
 
 import Services from '../../services';
-import type { Reply, Request } from '../../types';
 import { BadRequestError } from '../../utils/errorHandler';
 
 import type { IUserForRegister } from '@linx/shared';
+import type { Reply, Request } from '../../types';
 
 export default async function register(request: Request, reply: Reply) {
   const { first_name, last_name, email, password } =

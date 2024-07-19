@@ -1,11 +1,11 @@
 import auth from './auth';
+import user from './user';
 
 import type {
   DoneFuncWithErrOrRes,
   FastifyInstance,
   RegisterOptions,
 } from 'fastify';
-import user from './user';
 
 export default function routes(
   fastify: FastifyInstance,
