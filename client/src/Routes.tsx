@@ -1,5 +1,6 @@
 import { Routes as ReactRoutes, Route } from 'react-router';
 import useAuth from './hooks/Auth';
+import HomeApp from './pages/(app)/Home';
 import Login from './pages/(auth)/Login';
 import Signup from './pages/(auth)/Signup';
 import Home from './pages/home';
@@ -14,7 +15,9 @@ export enum AuthRoutesEnum {
   Welcome = '/welcome',
 }
 
-export enum PrivateRoutesEnum {}
+export enum PrivateRoutesEnum {
+  Home = '/home',
+}
 
 export function Routes() {
   const { user } = useAuth();
@@ -28,7 +31,13 @@ export function Routes() {
   );
 }
 
-const PrivateRoutes: JSX.Element[] = [];
+const PrivateRoutes: JSX.Element[] = [
+  <Route
+    key={PrivateRoutesEnum.Home}
+    path={PrivateRoutesEnum.Home}
+    Component={HomeApp}
+  />,
+];
 
 const AuthRoutes: JSX.Element[] = [
   <Route
