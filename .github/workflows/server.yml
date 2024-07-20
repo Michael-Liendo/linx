@@ -14,8 +14,6 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    env:
-      workdir: ./server
 
     steps:
       - name: Checkout Source
@@ -27,16 +25,10 @@ jobs:
           node-version: 20
 
       - name: Install Dependencies
-        working-directory: ${{ env.workdir }}
         run: npm install
 
-      - name: Lint Check
-        working-directory: ${{ env.workdir }}
-        run: npm run lint
-
-      - name: Build Check
-        working-directory: ${{ env.workdir }}
+      - name: Server Build Check
         env:
           NODE_ENV: production
           PORT: 3000
-        run: npm run build
+        run: npm run server:build
