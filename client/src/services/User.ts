@@ -8,7 +8,7 @@ export default class User {
 
       const response = await request.json();
 
-      return response as IUser;
+      return response.data.user as IUser;
     } catch (error) {
       console.error('UserServices', error);
       throw error;

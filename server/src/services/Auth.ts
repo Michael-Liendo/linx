@@ -45,7 +45,7 @@ export default class Auth {
 
     const id = await Repository.user.createUser(registeredUser);
 
-    const token = await this.login({
+    const token = await Auth.login({
       email: data.email,
       password: data.password,
     });

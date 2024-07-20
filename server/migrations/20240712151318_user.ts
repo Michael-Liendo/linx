@@ -5,7 +5,7 @@ export async function up(knex: Knex): Promise<void> {
   await knex.schema.createTable('users', (table) => {
     table
       .uuid('id')
-      .primary()
+      .unique()
       .defaultTo(knex.raw('uuid_generate_v4()'))
       .primary();
     table.string('first_name').notNullable();
