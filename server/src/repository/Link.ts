@@ -15,8 +15,10 @@ export class Link {
     return link;
   }
 
-  static async getByID(ID: string): Promise<ILink> {
-    const [link] = await database<ILink>('links').select('*').where({ id: ID });
+  static async getByID(ID: string): Promise<ILink[]> {
+    const link = await database<ILink>('links')
+      .select('*')
+      .where({ user_id: ID });
     return link;
   }
 

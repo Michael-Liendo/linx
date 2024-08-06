@@ -10,7 +10,7 @@ export async function up(knex: Knex): Promise<void> {
       .primary();
     table.string('url').notNullable();
     table.string('user_id').references('id').inTable('user');
-    table.string('shorter_name').notNullable();
+    table.string('shorter_name').unique().notNullable();
     table.timestamps(true, true);
   });
 }
