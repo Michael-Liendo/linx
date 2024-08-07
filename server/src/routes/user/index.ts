@@ -15,7 +15,11 @@ export default function user(
 ) {
   fastify.register(checkJwt);
 
-  fastify.get<{ Reply: IReply }>('/me', me);
+  fastify.route({
+    method: 'GET',
+    url: '/me',
+    handler: me,
+  });
 
   done();
 }

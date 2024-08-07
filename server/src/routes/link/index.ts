@@ -1,12 +1,13 @@
 import create from '../../controllers/Link/create';
 import checkJwt from '../../middlewares/checkJwt';
 
-import type { IReply } from '@linx/shared';
+import { linkSchema } from '@linx/shared';
 import type {
   DoneFuncWithErrOrRes,
   FastifyInstance,
   RegisterOptions,
 } from 'fastify';
+import requestValidation from '../../utils/requestValidation';
 
 export default function link(
   fastify: FastifyInstance,
@@ -15,7 +16,12 @@ export default function link(
 ) {
   fastify.register(checkJwt);
 
-  fastify.post<{ Reply: IReply }>('/create', create);
+  fastify.route({
+    method: 'POST',
+    url: '/create',
+    preHandler: requestValidation(linkSchema),
+    handler: create,
+  });
 
   done();
 }
