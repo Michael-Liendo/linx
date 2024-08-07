@@ -1,5 +1,6 @@
 import auth from './auth';
 import user from './user';
+import link from './link';
 
 import type {
   DoneFuncWithErrOrRes,
@@ -33,6 +34,7 @@ export default function routes(
 
   fastify.register(auth, { prefix: '/auth' });
   fastify.register(user, { prefix: '/user' });
+  fastify.register(link, { prefix: '/link' });
 
   done();
 }
