@@ -25,5 +25,5 @@ export default async function login(request: FastifyRequest, reply: Reply) {
 
   return reply
     .code(201)
-    .send({ message: 'User created', data: { token: user } });
+    .send({ success: true, message: 'User created', data: { token: user } });
 }

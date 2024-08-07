@@ -32,7 +32,6 @@ export const AuthProvider = ({ children }: { children?: React.ReactNode }) => {
     }
   };
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: i don't know how to fix it :/
   useEffect(() => {
     checkUser();
   }, []);

@@ -26,5 +26,8 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.8.3"
+  },
+  "dependencies": {
+    "zod": "^3.23.8"
   }
 }

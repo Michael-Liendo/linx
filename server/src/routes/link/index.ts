@@ -1,14 +1,15 @@
-import me from '../../controllers/User/me';
+import create from '../../controllers/Link/create';
 import checkJwt from '../../middlewares/checkJwt';
 
-import type { IReply } from '@linx/shared';
+import { linkSchema } from '@linx/shared';
 import type {
   DoneFuncWithErrOrRes,
   FastifyInstance,
   RegisterOptions,
 } from 'fastify';
+import requestValidation from '../../utils/requestValidation';
 
-export default function user(
+export default function link(
   fastify: FastifyInstance,
   _: RegisterOptions,
   done: DoneFuncWithErrOrRes,
@@ -16,9 +17,10 @@ export default function user(
   fastify.register(checkJwt);
 
   fastify.route({
-    method: 'GET',
-    url: '/me',
-    handler: me,
+    method: 'POST',
+    url: '/create',
+    preHandler: requestValidation(linkSchema),
+    handler: create,
   });
 
   done();
