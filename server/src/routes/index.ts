@@ -1,6 +1,6 @@
 import auth from './auth';
-import user from './user';
 import link from './link';
+import user from './user';
 
 import type {
   DoneFuncWithErrOrRes,

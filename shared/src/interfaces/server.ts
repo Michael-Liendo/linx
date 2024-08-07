@@ -1,14 +1,23 @@
 export interface IReply {
   '2xx': {
+    success: boolean;
     message: string;
     data: unknown;
   };
   400: {
-    error: string;
+    success: boolean;
     message: string;
+    errors: IError[];
   };
   500: {
-    error: string;
+    success: boolean;
     message: string;
+    errors?: IError[];
   };
+}
+
+export interface IError {
+  code: string;
+  path: string;
+  message: string;
 }
