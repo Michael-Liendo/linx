@@ -18,5 +18,7 @@ export default async function create(request: Request, reply: Reply) {
     user_id: user.id,
   });
 
-  return reply.code(201).send({ message: 'Link created', data: { id: link } });
+  return reply
+    .code(201)
+    .send({ success: true, message: 'Link created', data: { id: link } });
 }

@@ -29,5 +29,7 @@ export default async function register(request: Request, reply: Reply) {
     password,
   });
 
-  return reply.code(201).send({ message: 'User created', data: { ...user } });
+  return reply
+    .code(201)
+    .send({ success: true, message: 'User created', data: { ...user } });
 }
