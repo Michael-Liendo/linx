@@ -1,3 +1,3 @@
-export * from './User';
-export * from './Server';
-export * from './Link';
+export * from './user';
+export * from './server';
+export * from './link';
