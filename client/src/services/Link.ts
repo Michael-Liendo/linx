@@ -32,4 +32,19 @@ export default class Link {
       throw e;
     }
   }
+
+  static async deleteById(link_id: string) {
+    try {
+      const request = await fetch('/links/deleteById', {
+        method: 'DELETE',
+        body: JSON.stringify({ id: link_id }),
+      });
+      const body = await request.json();
+
+      return body.data.link_id as string;
+    } catch (error) {
+      console.error('link delete services', error);
+      throw error;
+    }
+  }
 }

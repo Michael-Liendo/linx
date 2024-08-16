@@ -12,5 +12,5 @@ export default async function deleteByID(request: Request, reply: Reply) {
 
   return reply
     .code(204)
-    .send({ success: true, message: 'Link Deleted', data: { link: link } });
+    .send({ success: true, message: 'Link Deleted', data: { link_id: link } });
 }
