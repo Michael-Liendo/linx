@@ -18,7 +18,7 @@ export function UserNav() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-          <Avatar className="h-8 w-8">
+          <Avatar className="h-8 w-8 flex items-center justify-center">
             <AvatarFallback>{`${user?.first_name.at(0)}${user?.last_name.at(0)}`}</AvatarFallback>
           </Avatar>
         </Button>

@@ -1,5 +1,5 @@
-import { type FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useFormik } from 'formik';
 
 import { TextField } from '@/components/text-field';
 import { Button } from '@/components/ui/button';
@@ -12,30 +12,29 @@ import {
 } from '@/components/ui/card';
 import useAuth from '../../hooks/useAuth';
 import Services from '../../services';
+import { UserLoginSchema } from '@linx/shared';
+import { toFormikValidationSchema } from '@/utils/toFormikValidationSchema';
 
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { values, errors, handleChange, handleSubmit } = useFormik({
+    initialValues: { email: '', password: '' },
+    validationSchema: toFormikValidationSchema(UserLoginSchema),
+    validateOnChange: false,
+    validateOnBlur: false,
+    onSubmit: async (values) => {
+      try {
+        const results = await Services.auth.login(values);
+
+        setToken(results.data.token);
+        navigate('/home');
+      } catch (e) {
+        console.error(e);
+      }
+    },
+  });
 
   const { setToken } = useAuth();
   const navigate = useNavigate();
-
-  async function handleSubmit(event: FormEvent) {
-    event.preventDefault();
-
-    if (!email || !password) {
-      return alert('Please complete the fields!');
-    }
-
-    try {
-      const results = await Services.auth.login({ email, password });
-      console.log(results);
-      setToken(results.data.token);
-      navigate('/home');
-    } catch (e) {
-      console.error(e);
-    }
-  }
 
   return (
     <div className="min-h-screen relative flex justify-center items-center bg-no-repeat bg-cover bg-slate-800 bg-[url('https://images.unsplash.com/photo-1720712738661-9c0dcb92f06d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')]">
@@ -58,7 +57,9 @@ export default function Login() {
                   className="w-full"
                   name="email"
                   label="Email Address"
-                  onValue={(value) => setEmail(value)}
+                  value={values.email}
+                  onChange={handleChange}
+                  error={errors.email}
                   required
                 />
 
@@ -68,7 +69,9 @@ export default function Login() {
                   type="password"
                   label="Password"
                   placeholder="* * * * * * *"
-                  onValue={(value) => setPassword(value)}
+                  value={values.password}
+                  error={errors.password}
+                  onChange={handleChange}
                   required
                 />
                 <Button type="submit" className="w-full mt-4">
