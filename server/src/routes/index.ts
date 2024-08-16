@@ -7,8 +7,8 @@ import type {
   FastifyInstance,
   RegisterOptions,
 } from 'fastify';
-import type { ErrorWithDetails } from '../utils/errorHandler';
 import redirect from '../controllers/Link/redirect';
+import type { ErrorWithDetails } from '../utils/errorHandler';
 
 export default function routes(
   fastify: FastifyInstance,

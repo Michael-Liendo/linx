@@ -4,8 +4,8 @@ import type { ColumnDef } from '@tanstack/react-table';
 import type { z } from 'zod';
 
 import { Checkbox } from '../../ui/checkbox';
-import { DataTableRowActions } from './linkx-table-row-actions';
 import { DataTableColumnHeader } from './links-table-column-header';
+import { DataTableRowActions } from './linkx-table-row-actions';
 
 export const linksColumns: ColumnDef<z.infer<typeof LinkSchema>>[] = [
   {

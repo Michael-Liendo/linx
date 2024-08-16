@@ -10,5 +10,5 @@ export default async function redirect(request: Request, reply: Reply) {
 
   const link = await Services.link.getByShorterName(shorter_name);
 
-  return reply.redirect(308, link.url);
+  return reply.redirect(link.url);
 }
