@@ -1,5 +1,3 @@
-'use client';
-
 import {
   type ColumnDef,
   type ColumnFiltersState,
@@ -23,10 +21,10 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '../../ui/table';
+} from './ui/table';
 
-import { DataTablePagination } from './links-table-pagination';
-import { DataTableToolbar } from './links-table-toolbar';
+import { DataTablePagination } from './datagrids/links/links-table-pagination';
+import { DataTableToolbar } from './datagrids/links/links-table-toolbar';
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];

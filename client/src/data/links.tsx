@@ -9,30 +9,15 @@ import {
   StopwatchIcon,
 } from '@radix-ui/react-icons';
 
-export const labels = [
-  {
-    value: 'bug',
-    label: 'Bug',
-  },
-  {
-    value: 'feature',
-    label: 'Feature',
-  },
-  {
-    value: 'documentation',
-    label: 'Documentation',
-  },
-];
-
 export const statuses = [
   {
     value: 'active',
-    label: 'Backlog',
+    label: 'Active',
     icon: QuestionMarkCircledIcon,
   },
   {
     value: 'archive',
-    label: 'Todo',
+    label: 'Archive',
     icon: CircleIcon,
   },
 ];

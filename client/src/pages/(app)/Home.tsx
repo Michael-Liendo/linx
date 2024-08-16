@@ -1,5 +1,5 @@
+import { DataTable } from '@/components/data-table';
 import { linksColumns } from '@/components/datagrids/links/links-columns';
-import { DataTable } from '@/components/datagrids/links/links-table';
 import { MainNav } from '@/components/main-nav';
 import { UserNav } from '@/components/user-nav';
 import { LinkSchema } from '@linx/shared';
@@ -8,7 +8,7 @@ import useAuth from '../../hooks/Auth';
 
 export default function HomeApp() {
   const { user } = useAuth();
-  console.log(user);
+
   return (
     <>
       {/* todo: move into a layout */}
@@ -26,9 +26,6 @@ export default function HomeApp() {
         <div className="flex items-center justify-between space-y-2">
           <div>
             <h2 className="text-2xl font-bold tracking-tight">Welcome back!</h2>
-            <p className="text-muted-foreground">
-              Here&apos;s a list of your tasks for this month!
-            </p>
           </div>
         </div>
         <DataTable
