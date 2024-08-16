@@ -34,15 +34,14 @@ export default function routes(
     return { hello: 'world' };
   });
 
+  fastify.register(auth, { prefix: '/auth' });
+  fastify.register(user, { prefix: '/user' });
+  fastify.register(link, { prefix: '/links' });
   fastify.route({
     method: 'GET',
     url: '/:shorter_name',
     handler: redirect,
   });
-
-  fastify.register(auth, { prefix: '/auth' });
-  fastify.register(user, { prefix: '/user' });
-  fastify.register(link, { prefix: '/links' });
 
   done();
 }
