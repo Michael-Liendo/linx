@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 
+import useAuth from '@/hooks/useAuth';
 import type { ILink, ILinkForCreate } from '@linx/shared';
 import { createContext, useEffect, useState } from 'react';
 import Services from '../services';
-import useAuth from '@/hooks/useAuth';
 
 export interface LinksContextProps {
   isLoading: boolean;
@@ -47,10 +47,11 @@ export const LinksProvider = ({ children }: { children?: React.ReactNode }) => {
 
   const deleteById = async (id: string) => {
     const link_id = await Services.link.deleteById(id);
+
     setLinks((oldLinks) => {
       const newList = [...oldLinks];
-      newList.filter((link) => link.id === link_id);
-      return newList;
+
+      return newList.filter((link) => link.id !== link_id);
     });
   };
 

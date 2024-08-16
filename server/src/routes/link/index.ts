@@ -1,10 +1,7 @@
 import create from '../../controllers/Link/create';
 import checkJwt from '../../middlewares/checkJwt';
 
-import {
-  LinkForDeleteSchema as LinkForCreateSchema,
-  LinkForDeleteSchema,
-} from '@linx/shared';
+import { LinkForCreateSchema, LinkForDeleteSchema } from '@linx/shared';
 import requestValidation from '../../utils/requestValidation';
 
 import type {

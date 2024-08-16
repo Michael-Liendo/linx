@@ -14,8 +14,11 @@ import { toFormikValidationSchema } from '@/utils/toFormikValidationSchema';
 import { LinkForCreateSchema } from '@linx/shared';
 import { Link1Icon } from '@radix-ui/react-icons';
 import { useFormik } from 'formik';
+import { useState } from 'react';
 
 export function LinkModalCreate() {
+  const [isOpen, setIsOpen] = useState(false);
+
   const { create } = useLinks();
   const { values, errors, handleChange, handleSubmit } = useFormik({
     initialValues: { url: '', shorter_name: '' },
@@ -26,11 +29,12 @@ export function LinkModalCreate() {
       const dto = LinkForCreateSchema.parse(values);
 
       create(dto);
+      setIsOpen(false);
     },
   });
 
   return (
-    <Dialog>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button className="ml-2 h-8 px-2 lg:px-3">
           <Link1Icon className="mr-2 h-4 w-4" />
@@ -72,11 +76,9 @@ export function LinkModalCreate() {
           </form>
         </div>
         <DialogFooter>
-          <DialogTrigger asChild>
-            <Button form="create-link" type="submit">
-              Create Link
-            </Button>
-          </DialogTrigger>
+          <Button form="create-link" type="submit">
+            Create Link
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

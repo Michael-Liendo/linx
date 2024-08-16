@@ -12,8 +12,8 @@ import {
   DropdownMenuTrigger,
 } from '../../ui/dropdown-menu';
 
-import { LinkSchema } from '@linx/shared';
 import useLinks from '@/hooks/useLinks';
+import { LinkSchema } from '@linx/shared';
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;

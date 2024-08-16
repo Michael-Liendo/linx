@@ -11,6 +11,6 @@ export default async function deleteByID(request: Request, reply: Reply) {
   const link = await Services.link.deleteByIdUser(id, user.id);
 
   return reply
-    .code(204)
+    .code(202)
     .send({ success: true, message: 'Link Deleted', data: { link_id: link } });
 }
