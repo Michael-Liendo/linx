@@ -4,9 +4,9 @@ import Services from '../services';
 
 export interface AuthContextProps {
   isLoading: boolean;
-  setUser: (user: IUser | null) => void;
+  setUser: (user: IUser) => void;
   setToken: (token: string) => void;
-  user: IUser | null;
+  user: IUser | undefined;
 }
 
 export const AuthContext = createContext<AuthContextProps | undefined>(
@@ -14,7 +14,7 @@ export const AuthContext = createContext<AuthContextProps | undefined>(
 );
 
 export const AuthProvider = ({ children }: { children?: React.ReactNode }) => {
-  const [user, setUser] = useState<IUser | null>(null);
+  const [user, setUser] = useState<IUser>();
   const [loading, setLoading] = useState(true);
 
   const checkUser = async () => {
@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }: { children?: React.ReactNode }) => {
     checkUser();
   }, []);
 
-  const updateUser = async (user: IUser | null) => {
+  const updateUser = async (user: IUser) => {
     await localStorage.set('user', JSON.stringify(user));
     setUser(user);
   };
