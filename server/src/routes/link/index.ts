@@ -1,7 +1,7 @@
 import create from '../../controllers/Link/create';
 import checkJwt from '../../middlewares/checkJwt';
 
-import { linkSchema } from '@linx/shared';
+import { LinkForCreateSchema } from '@linx/shared';
 import type {
   DoneFuncWithErrOrRes,
   FastifyInstance,
@@ -19,7 +19,7 @@ export default function link(
   fastify.route({
     method: 'POST',
     url: '/create',
-    preHandler: requestValidation(linkSchema),
+    preHandler: requestValidation(LinkForCreateSchema),
     handler: create,
   });
 
