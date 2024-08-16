@@ -6,14 +6,14 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { toFormikValidationSchema } from '@/utils/toFormikValidationSchema';
+import { UserLoginSchema } from '@linx/shared';
+import { useFormik } from 'formik';
 import { type FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TextField } from '../../components/text-field';
 import useAuth from '../../hooks/useAuth';
 import Services from '../../services';
-import { toFormikValidationSchema } from '@/utils/toFormikValidationSchema';
-import { UserLoginSchema } from '@linx/shared';
-import { useFormik } from 'formik';
 
 export default function Signup() {
   const { values, errors, handleChange, handleSubmit } = useFormik({

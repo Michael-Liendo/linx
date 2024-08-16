@@ -1,5 +1,5 @@
-import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
+import { useNavigate } from 'react-router-dom';
 
 import { TextField } from '@/components/text-field';
 import { Button } from '@/components/ui/button';
@@ -10,10 +10,10 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { toFormikValidationSchema } from '@/utils/toFormikValidationSchema';
+import { UserLoginSchema } from '@linx/shared';
 import useAuth from '../../hooks/useAuth';
 import Services from '../../services';
-import { UserLoginSchema } from '@linx/shared';
-import { toFormikValidationSchema } from '@/utils/toFormikValidationSchema';
 
 export default function Login() {
   const { values, errors, handleChange, handleSubmit } = useFormik({
