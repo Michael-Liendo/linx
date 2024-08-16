@@ -12,8 +12,8 @@ import type {
   FastifyInstance,
   RegisterOptions,
 } from 'fastify';
-import getAll from '../../controllers/Link/getAll';
 import deleteById from '../../controllers/Link/delete';
+import getAll from '../../controllers/Link/getAll';
 
 export default function link(
   fastify: FastifyInstance,
