@@ -28,7 +28,11 @@ export const useLinks = () => {
 
   const create = async (linkDTO: ILinkForCreate) => {
     const link = await Services.link.create(linkDTO);
-    setLinks((oldLinks) => [link, ...oldLinks]);
+    setLinks((oldLinks) => {
+      const newList = [...oldLinks];
+      newList.unshift(link);
+      return newList;
+    });
   };
 
   useEffect(() => {

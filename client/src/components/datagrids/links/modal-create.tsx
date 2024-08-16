@@ -55,6 +55,7 @@ export function LinkModalCreate() {
               id="shorter_name"
               name="shorter_name"
               placeholder="linx-short-url"
+              autoComplete="off"
               onValue={setShorterName}
               required
             />
