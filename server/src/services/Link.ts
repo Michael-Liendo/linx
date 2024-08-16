@@ -1,5 +1,5 @@
 import Repository from '../repository';
-import { BadRequestError } from '../utils/errorHandler';
+import { BadRequestError, UnauthorizedError } from '../utils/errorHandler';
 
 import type { ILink, ILinkForCreate } from '@linx/shared';
 
@@ -17,5 +17,17 @@ export default class Link {
   static async getAllByUser(user_id: string): Promise<ILink[]> {
     const links = await Repository.link.getUserLinks(user_id);
     return links;
+  }
+
+  static async deleteByIdUser(
+    link_id: string,
+    user_id: string,
+  ): Promise<string> {
+    const check = await Repository.link.getById(link_id);
+    if (check.user_id !== user_id)
+      throw new UnauthorizedError('You no are the owner of this link');
+
+    const deleted_link_id = await Repository.link.deleteById(link_id);
+    return deleted_link_id;
   }
 }

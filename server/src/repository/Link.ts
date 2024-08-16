@@ -18,17 +18,21 @@ export class Link {
     return link;
   }
 
-  static async getByID(ID: string): Promise<ILink[]> {
-    const link = await database<ILink>('links').select('*').where({ id: ID });
+  static async getById(id: string): Promise<ILink> {
+    const [link] = await database<ILink>('links').select('*').where({ id: id });
     return link;
   }
 
-  static async getUserLinks(userID: string): Promise<ILink[]> {
+  static async getUserLinks(userId: string): Promise<ILink[]> {
     const links = await database<ILink>('links')
       .select('*')
-      .where({ user_id: userID })
+      .where({ user_id: userId })
       .orderBy('created_at', 'desc');
 
     return links;
+  }
+  static async deleteById(linkId: string): Promise<string> {
+    const _link = await database<ILink>('links').where('id', linkId).delete();
+    return linkId;
   }
 }

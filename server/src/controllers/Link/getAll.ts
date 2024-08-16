@@ -11,5 +11,5 @@ export default async function getAll(request: Request, reply: Reply) {
 
   return reply
     .code(201)
-    .send({ success: true, message: 'Link created', data: { links } });
+    .send({ success: true, message: 'All links listed', data: { links } });
 }
