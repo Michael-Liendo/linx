@@ -10,7 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import useAuth from '../../hooks/Auth';
+import useAuth from '../../hooks/useAuth';
 import Services from '../../services';
 
 export default function Login() {

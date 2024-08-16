@@ -20,5 +20,5 @@ export default async function create(request: Request, reply: Reply) {
 
   return reply
     .code(201)
-    .send({ success: true, message: 'Link created', data: { id: link } });
+    .send({ success: true, message: 'Link created', data: { link: link } });
 }

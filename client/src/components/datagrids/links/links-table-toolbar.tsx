@@ -1,9 +1,10 @@
-import { Cross2Icon } from '@radix-ui/react-icons';
+import { Cross2Icon, Link1Icon } from '@radix-ui/react-icons';
 import type { Table } from '@tanstack/react-table';
 
 import { Button } from '../../ui/button';
 import { Input } from '../../ui/input';
 import { DataTableViewOptions } from './links-table-view-options';
+import { LinkModalCreate } from './modal-create';
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
@@ -29,7 +30,7 @@ export function DataTableToolbar<TData>({
         />
         {/* 
         todo: for enums of data
-         {table.getColumn('shorter_name') && (
+          {table.getColumn('shorter_name') && (
           <DataTableFacetedFilter
             column={table.getColumn('shorter_name')}
             title="shorter_name"
@@ -49,6 +50,7 @@ export function DataTableToolbar<TData>({
         )}
       </div>
       <DataTableViewOptions table={table} />
+      <LinkModalCreate />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { Routes } from './Routes';
 import { AuthProvider } from './context/AuthContext';
-import { LinksProvider } from './context/LinxContext';
+import { LinksProvider } from './context/LinksContext';
 import { ThemeProvider } from './context/ThemeContext';
 
 function App() {

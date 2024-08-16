@@ -1,11 +1,13 @@
-import type { ILink } from '@linx/shared';
+import { useContext } from 'react';
+
+import type { ILink, ILinkForCreate } from '@linx/shared';
 import { createContext, useEffect, useState } from 'react';
 import Services from '../services';
-import { AuthContext } from './AuthContext';
 
 export interface LinksContextProps {
   isLoading: boolean;
   links: ILink[] | [];
+  create: (link: ILinkForCreate) => void;
 }
 
 export const LinksContext = createContext<LinksContextProps | undefined>(
@@ -28,12 +30,21 @@ export const LinksProvider = ({ children }: { children?: React.ReactNode }) => {
     }
   };
 
+  const create = async (linkDTO: ILinkForCreate) => {
+    const link = await Services.link.create(linkDTO);
+    setLinks((oldLinks) => {
+      const newList = [...oldLinks];
+      newList.unshift(link);
+      return newList;
+    });
+  };
+
   useEffect(() => {
     getLinks();
   }, []);
 
   return (
-    <LinksContext.Provider value={{ isLoading: loading, links }}>
+    <LinksContext.Provider value={{ isLoading: loading, links, create }}>
       {children}
     </LinksContext.Provider>
   );

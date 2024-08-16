@@ -10,5 +10,5 @@ export interface ILink {
 export interface ILinkForCreate {
   url: string;
   shorter_name: string;
-  user_id: string;
+  user_id?: string;
 }

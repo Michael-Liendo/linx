@@ -3,9 +3,12 @@ import database from './database';
 import type { ILink, ILinkForCreate } from '@linx/shared';
 
 export class Link {
-  static async create(link: ILinkForCreate): Promise<string> {
-    const [id] = await database<ILink>('links').insert(link).returning('id');
-    return id.id;
+  static async create(linkDTO: ILinkForCreate): Promise<ILink> {
+    const [link] = await database<ILink>('links')
+      .insert(linkDTO)
+      .returning('*')
+      .orderBy('created_at');
+    return link;
   }
 
   static async getByShorterName(shorter_name: string): Promise<ILink> {
@@ -16,16 +19,16 @@ export class Link {
   }
 
   static async getByID(ID: string): Promise<ILink[]> {
-    const link = await database<ILink>('links')
-      .select('*')
-      .where({ user_id: ID });
+    const link = await database<ILink>('links').select('*').where({ id: ID });
     return link;
   }
 
   static async getUserLinks(userID: string): Promise<ILink[]> {
     const links = await database<ILink>('links')
       .select('*')
-      .where({ user_id: userID });
+      .where({ user_id: userID })
+      .orderBy('created_at', 'desc');
+
     return links;
   }
 }
