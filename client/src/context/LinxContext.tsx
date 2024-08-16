@@ -1,6 +1,6 @@
+import type { ILink } from '@linx/shared';
 import { createContext, useEffect, useState } from 'react';
 import Services from '../services';
-import type { ILink } from '@linx/shared';
 import { AuthContext } from './AuthContext';
 
 export interface LinksContextProps {
