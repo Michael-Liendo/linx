@@ -4,7 +4,7 @@ import { BadRequestError } from '../utils/errorHandler';
 import type { ILink, ILinkForCreate } from '@linx/shared';
 
 export default class Link {
-  static async create(link_dto: ILinkForCreate): Promise<string> {
+  static async create(link_dto: ILinkForCreate): Promise<ILink> {
     const check = await Repository.link.getByShorterName(link_dto.shorter_name);
     if (check)
       throw new BadRequestError('Exists the shorter name, please select other');
@@ -15,7 +15,7 @@ export default class Link {
   }
 
   static async getAllByUser(user_id: string): Promise<ILink[]> {
-    const links = await Repository.link.getByID(user_id);
+    const links = await Repository.link.getUserLinks(user_id);
     return links;
   }
 }

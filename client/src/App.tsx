@@ -1,17 +1,14 @@
 import { Routes } from './Routes';
 import { AuthProvider } from './context/AuthContext';
-import { LinksProvider } from './context/LinxContext';
 import { ThemeProvider } from './context/ThemeContext';
 
 function App() {
   return (
     <>
       <AuthProvider>
-        <LinksProvider>
-          <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-            <Routes />
-          </ThemeProvider>
-        </LinksProvider>
+        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+          <Routes />
+        </ThemeProvider>
       </AuthProvider>
     </>
   );

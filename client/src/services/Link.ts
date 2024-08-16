@@ -1,5 +1,5 @@
-import { z } from 'zod';
 import { LinkSchema } from '@linx/shared';
+import { z } from 'zod';
 import fetch from '../utils/fetch';
 
 import type { ILinkForCreate } from '@linx/shared';
@@ -21,6 +21,7 @@ export default class Link {
   static async create(link: ILinkForCreate) {
     try {
       const request = await fetch('/links/create', {
+        method: 'POST',
         body: JSON.stringify(link),
       });
       const body = await request.json();

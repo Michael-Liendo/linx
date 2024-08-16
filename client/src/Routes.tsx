@@ -1,5 +1,5 @@
 import { Routes as ReactRoutes, Route } from 'react-router';
-import useAuth from './hooks/Auth';
+import useAuth from './hooks/useAuth';
 import HomeApp from './pages/(app)/Home';
 import Login from './pages/(auth)/Login';
 import Signup from './pages/(auth)/Signup';

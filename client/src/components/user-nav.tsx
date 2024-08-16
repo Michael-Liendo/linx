@@ -1,4 +1,4 @@
-import useAuth from '@/hooks/Auth';
+import useAuth from '@/hooks/useAuth';
 import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar';
 import { Button } from './ui/button';
 import {

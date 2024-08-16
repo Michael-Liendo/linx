@@ -3,7 +3,7 @@ import { linksColumns } from '@/components/datagrids/links/links-columns';
 import { MainNav } from '@/components/main-nav';
 import { UserNav } from '@/components/user-nav';
 
-import useLinks from '@/hooks/useLinks';
+import { useLinks } from '@/hooks/useLinks';
 
 export default function HomeApp() {
   const { links } = useLinks();

@@ -9,7 +9,7 @@ import {
 import { type FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TextField } from '../../components/text-field';
-import useAuth from '../../hooks/Auth';
+import useAuth from '../../hooks/useAuth';
 import Services from '../../services';
 
 export default function Signup() {
