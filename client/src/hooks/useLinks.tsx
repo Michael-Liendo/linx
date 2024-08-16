@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
 import { LinksContext } from '@/context/LinxContext';
 
 export default function useLinks() {

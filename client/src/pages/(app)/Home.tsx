@@ -2,12 +2,11 @@ import { DataTable } from '@/components/data-table';
 import { linksColumns } from '@/components/datagrids/links/links-columns';
 import { MainNav } from '@/components/main-nav';
 import { UserNav } from '@/components/user-nav';
-import { LinkSchema } from '@linx/shared';
-import { z } from 'zod';
-import useAuth from '../../hooks/Auth';
+
+import useLinks from '@/hooks/useLinks';
 
 export default function HomeApp() {
-  const { user } = useAuth();
+  const { links } = useLinks();
 
   return (
     <>
@@ -28,19 +27,7 @@ export default function HomeApp() {
             <h2 className="text-2xl font-bold tracking-tight">Welcome back!</h2>
           </div>
         </div>
-        <DataTable
-          data={z.array(LinkSchema).parse([
-            {
-              shorter_name: 'michael',
-              url: 'https://michaelliendo.com',
-              id: '3',
-              user_id: user?.id,
-              created_at: new Date(),
-              updated_at: new Date(),
-            },
-          ])}
-          columns={linksColumns}
-        />
+        <DataTable data={links} columns={linksColumns} />
       </div>
     </>
   );

@@ -5,8 +5,8 @@ export const LinkSchema = z.object({
   url: z.string().url(),
   shorter_name: z.string().max(20),
   user_id: z.string(),
-  created_at: z.date(),
-  updated_at: z.date(),
+  created_at: z.coerce.date(),
+  updated_at: z.coerce.date(),
 });
 
 export const LinkForCreateSchema = z.object({

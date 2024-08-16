@@ -5,7 +5,7 @@ import { AuthContext } from './AuthContext';
 
 export interface LinksContextProps {
   isLoading: boolean;
-  links: ILink[] | undefined;
+  links: ILink[] | [];
 }
 
 export const LinksContext = createContext<LinksContextProps | undefined>(
@@ -13,7 +13,7 @@ export const LinksContext = createContext<LinksContextProps | undefined>(
 );
 
 export const LinksProvider = ({ children }: { children?: React.ReactNode }) => {
-  const [links, setLinks] = useState<ILink[]>();
+  const [links, setLinks] = useState<ILink[]>([]);
   const [loading, setLoading] = useState(true);
 
   const getLinks = async () => {
