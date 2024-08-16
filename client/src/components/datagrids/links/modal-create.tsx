@@ -10,27 +10,24 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import useLinks from '@/hooks/useLinks';
+import { toFormikValidationSchema } from '@/utils/toFormikValidationSchema';
 import { LinkForCreateSchema } from '@linx/shared';
 import { Link1Icon } from '@radix-ui/react-icons';
-import { useState } from 'react';
-
-import type { FormEvent } from 'react';
+import { useFormik } from 'formik';
 
 export function LinkModalCreate() {
-  const [shorterName, setShorterName] = useState('');
-  const [url, setUrl] = useState('');
   const { create } = useLinks();
+  const { values, errors, handleChange, handleSubmit } = useFormik({
+    initialValues: { url: '', shorter_name: '' },
+    validationSchema: toFormikValidationSchema(LinkForCreateSchema),
+    validateOnChange: false,
+    validateOnBlur: false,
+    onSubmit: async (values) => {
+      const dto = LinkForCreateSchema.parse(values);
 
-  async function handleSubmit(event: FormEvent) {
-    event.preventDefault();
-    const dto = LinkForCreateSchema.parse({
-      shorter_name: shorterName,
-      url,
-    });
-    console.log;
-
-    create(dto);
-  }
+      create(dto);
+    },
+  });
 
   return (
     <Dialog>
@@ -56,7 +53,9 @@ export function LinkModalCreate() {
               name="shorter_name"
               placeholder="linx-short-url"
               autoComplete="off"
-              onValue={setShorterName}
+              value={values.shorter_name}
+              error={errors.shorter_name}
+              onChange={handleChange}
               required
             />
             <TextField
@@ -65,7 +64,9 @@ export function LinkModalCreate() {
               id="url"
               name="url"
               placeholder="https://example.com/longlonglonglonglonglongurl"
-              onValue={setUrl}
+              value={values.url}
+              error={errors.url}
+              onChange={handleChange}
               required
             />
           </form>

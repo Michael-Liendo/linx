@@ -6,6 +6,9 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { toFormikValidationSchema } from '@/utils/toFormikValidationSchema';
+import { UserLoginSchema } from '@linx/shared';
+import { useFormik } from 'formik';
 import { type FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TextField } from '../../components/text-field';
@@ -13,35 +16,25 @@ import useAuth from '../../hooks/useAuth';
 import Services from '../../services';
 
 export default function Signup() {
-  const [name, setName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { values, errors, handleChange, handleSubmit } = useFormik({
+    initialValues: { first_name: '', last_name: '', email: '', password: '' },
+    validationSchema: toFormikValidationSchema(UserLoginSchema),
+    validateOnChange: false,
+    validateOnBlur: false,
+    onSubmit: async (values) => {
+      try {
+        const results = await Services.auth.register(values);
+        console.log(results);
+        setToken(results.data.token);
+        navigate('/home');
+      } catch (e) {
+        console.error(e);
+      }
+    },
+  });
 
   const { setToken } = useAuth();
   const navigate = useNavigate();
-
-  async function handleSubmit(event: FormEvent) {
-    event.preventDefault();
-
-    if (!name || !lastName || !email || !password) {
-      return alert('Please complete the fields!');
-    }
-
-    try {
-      const results = await Services.auth.register({
-        first_name: name,
-        last_name: lastName,
-        email,
-        password,
-      });
-      console.log(results);
-      setToken(results.data.token);
-      navigate('/home');
-    } catch (e) {
-      console.error(e);
-    }
-  }
 
   return (
     <div className="min-h-screen relative flex justify-center items-center bg-no-repeat bg-cover bg-slate-800 bg-[url('https://images.unsplash.com/photo-1720712738661-9c0dcb92f06d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')]">
@@ -64,7 +57,9 @@ export default function Signup() {
                     name="first_name"
                     placeholder="John"
                     label="First Name"
-                    onValue={(val) => setName(val)}
+                    value={values.first_name}
+                    error={errors.first_name}
+                    onChange={handleChange}
                     required
                   />
                   <TextField
@@ -72,7 +67,9 @@ export default function Signup() {
                     name="last_name"
                     placeholder="Doe"
                     label="Last Name"
-                    onValue={(val) => setLastName(val)}
+                    value={values.last_name}
+                    error={errors.last_name}
+                    onChange={handleChange}
                     required
                   />
                 </div>
@@ -82,7 +79,9 @@ export default function Signup() {
                   className="w-full"
                   name="email"
                   label="Email"
-                  onValue={(val) => setEmail(val)}
+                  value={values.email}
+                  error={errors.email}
+                  onChange={handleChange}
                   required
                 />
                 <TextField
@@ -91,7 +90,9 @@ export default function Signup() {
                   name="password"
                   type="password"
                   placeholder="* * * * * * *"
-                  onValue={(val) => setPassword(val)}
+                  value={values.password}
+                  error={errors.password}
+                  onChange={handleChange}
                   required
                 />
                 <Button type="submit" className="w-full mt-4">
