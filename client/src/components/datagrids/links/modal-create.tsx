@@ -9,7 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { useLinks } from '@/hooks/useLinks';
+import useLinks from '@/hooks/useLinks';
 import { LinkForCreateSchema } from '@linx/shared';
 import { Link1Icon } from '@radix-ui/react-icons';
 import { useState } from 'react';
