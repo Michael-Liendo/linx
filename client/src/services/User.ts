@@ -1,4 +1,5 @@
-import type { IUser, IUserForRegister } from '@linx/shared';
+import { UserSchema } from '@linx/shared';
+import { z } from 'zod';
 import fetch from '../utils/fetch';
 
 export default class User {
@@ -8,7 +9,7 @@ export default class User {
 
       const response = await request.json();
 
-      return response.data.user as IUser;
+      return UserSchema.parse(response.data.user);
     } catch (error) {
       console.error('UserServices', error);
       throw error;

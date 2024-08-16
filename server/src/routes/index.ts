@@ -17,6 +17,7 @@ export default function routes(
   fastify.setErrorHandler((error: ErrorWithDetails, _, reply) => {
     if (error.statusCode >= 500) {
       fastify.log.error(error);
+      console.error(error);
     } else if (error.statusCode >= 400) {
       fastify.log.info(error);
     }
@@ -34,7 +35,7 @@ export default function routes(
 
   fastify.register(auth, { prefix: '/auth' });
   fastify.register(user, { prefix: '/user' });
-  fastify.register(link, { prefix: '/link' });
+  fastify.register(link, { prefix: '/links' });
 
   done();
 }

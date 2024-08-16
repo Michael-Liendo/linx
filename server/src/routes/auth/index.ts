@@ -1,7 +1,7 @@
 import login from '../../controllers/Auth/login';
 import register from '../../controllers/Auth/register';
 
-import { type IReply, userCreateSchema, userLoginSchema } from '@linx/shared';
+import { type IReply, UserCreateSchema, UserLoginSchema } from '@linx/shared';
 import type {
   DoneFuncWithErrOrRes,
   FastifyInstance,
@@ -17,14 +17,14 @@ export default function auth(
   fastify.route({
     method: 'POST',
     url: '/login',
-    preHandler: requestValidation(userLoginSchema),
+    preHandler: requestValidation(UserLoginSchema),
     handler: login,
   });
 
   fastify.route({
     method: 'POST',
     url: '/register',
-    preHandler: requestValidation(userCreateSchema),
+    preHandler: requestValidation(UserCreateSchema),
     handler: register,
   });
 

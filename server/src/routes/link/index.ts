@@ -1,13 +1,15 @@
 import create from '../../controllers/Link/create';
 import checkJwt from '../../middlewares/checkJwt';
 
-import { linkSchema } from '@linx/shared';
+import { LinkForCreateSchema } from '@linx/shared';
+import requestValidation from '../../utils/requestValidation';
+
 import type {
   DoneFuncWithErrOrRes,
   FastifyInstance,
   RegisterOptions,
 } from 'fastify';
-import requestValidation from '../../utils/requestValidation';
+import getAll from '../../controllers/Link/getAll';
 
 export default function link(
   fastify: FastifyInstance,
@@ -17,9 +19,15 @@ export default function link(
   fastify.register(checkJwt);
 
   fastify.route({
+    method: 'GET',
+    url: '/getAll',
+    handler: getAll,
+  });
+
+  fastify.route({
     method: 'POST',
     url: '/create',
-    preHandler: requestValidation(linkSchema),
+    preHandler: requestValidation(LinkForCreateSchema),
     handler: create,
   });
 

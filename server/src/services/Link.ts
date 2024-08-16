@@ -14,7 +14,7 @@ export default class Link {
     return link;
   }
 
-  static async getAllUserLinks(user_id: string): Promise<ILink[]> {
+  static async getAllByUser(user_id: string): Promise<ILink[]> {
     const links = await Repository.link.getByID(user_id);
     return links;
   }

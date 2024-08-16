@@ -3,7 +3,6 @@ import useAuth from './hooks/Auth';
 import HomeApp from './pages/(app)/Home';
 import Login from './pages/(auth)/Login';
 import Signup from './pages/(auth)/Signup';
-import Home from './pages/home';
 
 export enum PublicRoutesEnum {
   Home = '/',
@@ -56,6 +55,6 @@ const PublicRoutes = [
   <Route
     key={PublicRoutesEnum.Home}
     path={PublicRoutesEnum.Home}
-    Component={Home}
+    element={<>hello</>}
   />,
 ];
