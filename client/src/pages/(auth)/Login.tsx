@@ -1,7 +1,15 @@
 import { type FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Button from '../../components/Button';
-import TextField from '../../components/TextField';
+
+import { TextField } from '@/components/text-field';
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import useAuth from '../../hooks/Auth';
 import Services from '../../services';
 
@@ -37,32 +45,38 @@ export default function Login() {
           <h1 className="text-6xl text-center font-bold text-white mb-16">
             Linx
           </h1>
-          <form
-            onSubmit={handleSubmit}
-            className="w-96 bg-slate-200 rounded-xl py-4 px-4 space-y-2"
-          >
-            <TextField
-              type="email"
-              placeholder="example@email.com"
-              className="w-full"
-              name="email"
-              label="Email"
-              onChange={(val) => setEmail(val)}
-              required
-            />
-            <TextField
-              label="Password"
-              className="w-full"
-              name="password"
-              type="password"
-              placeholder="* * * * * * *"
-              onChange={(val) => setPassword(val)}
-              required
-            />
-            <Button type="submit" className="w-full mt-4">
-              Log in
-            </Button>
-          </form>
+
+          <Card className="w-96">
+            <CardHeader>
+              <CardTitle>Login</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <form className="space-y-4" onSubmit={handleSubmit}>
+                <TextField
+                  type="email"
+                  placeholder="example@email.com"
+                  className="w-full"
+                  name="email"
+                  label="Email Address"
+                  onValue={(value) => setEmail(value)}
+                  required
+                />
+
+                <TextField
+                  className="w-full"
+                  name="password"
+                  type="password"
+                  label="Password"
+                  placeholder="* * * * * * *"
+                  onValue={(value) => setPassword(value)}
+                  required
+                />
+                <Button type="submit" className="w-full mt-4">
+                  Log in
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
           <div className="text-center w-full text-white mt-3">
             {'Do you not have an account? '}
             <a className="underline" href="/signup">

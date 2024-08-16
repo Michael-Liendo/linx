@@ -1,7 +1,14 @@
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import { type FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Button from '../../components/Button';
-import TextField from '../../components/TextField';
+import { TextField } from '../../components/text-field';
 import useAuth from '../../hooks/Auth';
 import Services from '../../services';
 
@@ -44,50 +51,56 @@ export default function Signup() {
           <h1 className="text-6xl text-center font-bold text-white mb-16">
             Linx
           </h1>
-          <form
-            onSubmit={handleSubmit}
-            className="w-96 bg-slate-200 rounded-xl py-4 px-4 space-y-2"
-          >
-            <div className="flex justify-center w-full items-center space-x-3">
-              <TextField
-                className="w-full"
-                name="first_name"
-                placeholder="John"
-                label="First Name"
-                onChange={(val) => setName(val)}
-                required
-              />
-              <TextField
-                className="w-full"
-                name="last_name"
-                placeholder="Doe"
-                label="Last Name"
-                onChange={(val) => setLastName(val)}
-                required
-              />
-            </div>
-            <TextField
-              type="email"
-              placeholder="example@email.com"
-              className="w-full"
-              name="email"
-              label="Email"
-              onChange={(val) => setEmail(val)}
-              required
-            />
-            <TextField
-              label="Password"
-              className="w-full"
-              name="password"
-              type="password"
-              placeholder="* * * * * * *"
-              onChange={(val) => setPassword(val)}
-              required
-            />
-            <Button type="submit" className="w-full mt-4">
-              Sign Up
-            </Button>
-          </form>
+
+          <Card className="w-96">
+            <CardHeader>
+              <CardTitle>Sign up</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <form className="space-y-4" onSubmit={handleSubmit}>
+                <div className="flex justify-center w-full items-center space-x-3">
+                  <TextField
+                    className="w-full"
+                    name="first_name"
+                    placeholder="John"
+                    label="First Name"
+                    onValue={(val) => setName(val)}
+                    required
+                  />
+                  <TextField
+                    className="w-full"
+                    name="last_name"
+                    placeholder="Doe"
+                    label="Last Name"
+                    onValue={(val) => setLastName(val)}
+                    required
+                  />
+                </div>
+                <TextField
+                  type="email"
+                  placeholder="example@email.com"
+                  className="w-full"
+                  name="email"
+                  label="Email"
+                  onValue={(val) => setEmail(val)}
+                  required
+                />
+                <TextField
+                  label="Password"
+                  className="w-full"
+                  name="password"
+                  type="password"
+                  placeholder="* * * * * * *"
+                  onValue={(val) => setPassword(val)}
+                  required
+                />
+                <Button type="submit" className="w-full mt-4">
+                  Sign up
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
+
           <div className="text-center w-full text-white mt-3">
             {'Do you have an account? '}
             <a className="underline" href="/login">
