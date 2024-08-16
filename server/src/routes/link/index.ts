@@ -2,12 +2,13 @@ import create from '../../controllers/Link/create';
 import checkJwt from '../../middlewares/checkJwt';
 
 import { LinkForCreateSchema } from '@linx/shared';
+import requestValidation from '../../utils/requestValidation';
+
 import type {
   DoneFuncWithErrOrRes,
   FastifyInstance,
   RegisterOptions,
 } from 'fastify';
-import requestValidation from '../../utils/requestValidation';
 
 export default function link(
   fastify: FastifyInstance,
