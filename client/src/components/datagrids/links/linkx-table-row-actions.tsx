@@ -1,3 +1,5 @@
+'use client';
+
 import { DotsHorizontalIcon } from '@radix-ui/react-icons';
 import type { Row } from '@tanstack/react-table';
 
@@ -18,11 +20,15 @@ import {
 
 import { LinkSchema } from '@linx/shared';
 
-interface _DataTableRowActionsProps<TData> {
+interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
 }
 
-export function DataTableRowActions<_TData>() {
+export function DataTableRowActions<TData>({
+  row,
+}: DataTableRowActionsProps<TData>) {
+  const _link = LinkSchema.parse(row.original);
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -36,8 +42,6 @@ export function DataTableRowActions<_TData>() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[160px]">
         <DropdownMenuItem>Edit</DropdownMenuItem>
-        <DropdownMenuItem>Make a copy</DropdownMenuItem>
-        <DropdownMenuItem>Favorite</DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
           Delete

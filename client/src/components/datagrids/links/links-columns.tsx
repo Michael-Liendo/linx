@@ -75,7 +75,7 @@ export const linksColumns: ColumnDef<z.infer<typeof LinkSchema>>[] = [
   {
     accessorKey: 'created_at',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="created at" />
+      <DataTableColumnHeader column={column} title="Created at" />
     ),
     cell: ({ row }) => {
       return (
@@ -87,7 +87,21 @@ export const linksColumns: ColumnDef<z.infer<typeof LinkSchema>>[] = [
       );
     },
   },
-
+  {
+    accessorKey: 'updated_at',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Update date" />
+    ),
+    cell: ({ row }) => {
+      return (
+        <div className="flex space-x-2">
+          <span className="max-w-[500px] truncate font-medium">
+            {row.original.updated_at.toLocaleString()}
+          </span>
+        </div>
+      );
+    },
+  },
   {
     id: 'actions',
     cell: ({ row }) => <DataTableRowActions row={row} />,
