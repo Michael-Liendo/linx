@@ -10,6 +10,6 @@ export default async function getAll(request: Request, reply: Reply) {
   const links = await Services.link.getAllByUser(user.id);
 
   return reply
-    .code(201)
-    .send({ success: true, message: 'Link created', data: { links } });
+    .code(200)
+    .send({ success: true, message: 'All links listed', data: { links } });
 }

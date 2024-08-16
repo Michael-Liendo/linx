@@ -12,3 +12,7 @@ export interface ILinkForCreate {
   shorter_name: string;
   user_id?: string;
 }
+
+export interface ILinkForDelete {
+  id: string;
+}

@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 
+import useAuth from '@/hooks/useAuth';
 import type { ILink, ILinkForCreate } from '@linx/shared';
 import { createContext, useEffect, useState } from 'react';
 import Services from '../services';
@@ -8,6 +9,7 @@ export interface LinksContextProps {
   isLoading: boolean;
   links: ILink[] | [];
   create: (link: ILinkForCreate) => void;
+  deleteById: (link_id: string) => void;
 }
 
 export const LinksContext = createContext<LinksContextProps | undefined>(
@@ -15,10 +17,14 @@ export const LinksContext = createContext<LinksContextProps | undefined>(
 );
 
 export const LinksProvider = ({ children }: { children?: React.ReactNode }) => {
+  const { user } = useAuth();
   const [links, setLinks] = useState<ILink[]>([]);
   const [loading, setLoading] = useState(true);
 
   const getLinks = async () => {
+    if (!user) {
+      return;
+    }
     setLoading(true);
     try {
       const links = await Services.link.getAll();
@@ -39,12 +45,24 @@ export const LinksProvider = ({ children }: { children?: React.ReactNode }) => {
     });
   };
 
+  const deleteById = async (id: string) => {
+    const link_id = await Services.link.deleteById(id);
+
+    setLinks((oldLinks) => {
+      const newList = [...oldLinks];
+
+      return newList.filter((link) => link.id !== link_id);
+    });
+  };
+
   useEffect(() => {
     getLinks();
-  }, []);
+  }, [user]);
 
   return (
-    <LinksContext.Provider value={{ isLoading: loading, links, create }}>
+    <LinksContext.Provider
+      value={{ isLoading: loading, links, create, deleteById }}
+    >
       {children}
     </LinksContext.Provider>
   );

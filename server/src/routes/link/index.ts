@@ -1,7 +1,7 @@
 import create from '../../controllers/Link/create';
 import checkJwt from '../../middlewares/checkJwt';
 
-import { LinkForCreateSchema } from '@linx/shared';
+import { LinkForCreateSchema, LinkForDeleteSchema } from '@linx/shared';
 import requestValidation from '../../utils/requestValidation';
 
 import type {
@@ -9,6 +9,7 @@ import type {
   FastifyInstance,
   RegisterOptions,
 } from 'fastify';
+import deleteById from '../../controllers/Link/delete';
 import getAll from '../../controllers/Link/getAll';
 
 export default function link(
@@ -29,6 +30,13 @@ export default function link(
     url: '/create',
     preHandler: requestValidation(LinkForCreateSchema),
     handler: create,
+  });
+
+  fastify.route({
+    method: 'DELETE',
+    url: '/deleteById',
+    preHandler: requestValidation(LinkForDeleteSchema),
+    handler: deleteById,
   });
 
   done();

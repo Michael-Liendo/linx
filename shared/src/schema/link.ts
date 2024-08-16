@@ -13,3 +13,7 @@ export const LinkForCreateSchema = z.object({
   url: z.string().url(),
   shorter_name: z.string().max(20),
 });
+
+export const LinkForDeleteSchema = z.object({
+  id: z.string(),
+});
