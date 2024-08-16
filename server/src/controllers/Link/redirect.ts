@@ -5,11 +5,10 @@ import type { ILinkForCreate } from '@linx/shared';
 import type { Reply, Request } from '../../types';
 
 export default async function redirect(request: Request, reply: Reply) {
-  const user = request.user;
+  const shorter_name = (request.params as { shorter_name: string })
+    .shorter_name;
 
-  const links = await Services.link.getAllByUser(user.id);
+  const link = await Services.link.getByShorterName(shorter_name);
 
-  return reply
-    .code(200)
-    .send({ success: true, message: 'All links listed', data: { links } });
+  return reply.redirect(308, link.url);
 }
