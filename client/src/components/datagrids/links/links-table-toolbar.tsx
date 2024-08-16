@@ -3,12 +3,9 @@
 import { Cross2Icon } from '@radix-ui/react-icons';
 import type { Table } from '@tanstack/react-table';
 
-import { DataTableViewOptions } from './data-table-view-options';
-import { Button } from './ui/button';
-import { Input } from './ui/input';
-
-import { priorities, statuses } from '../data/links';
-import { DataTableFacetedFilter } from './data-table-faceted-filter';
+import { Button } from '../../ui/button';
+import { Input } from '../../ui/input';
+import { DataTableViewOptions } from './links-table-view-options';
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
@@ -32,7 +29,9 @@ export function DataTableToolbar<TData>({
           }
           className="h-8 w-[150px] lg:w-[250px]"
         />
-        {/*  {table.getColumn('shorter_name') && (
+        {/* 
+        todo: for enums of data
+         {table.getColumn('shorter_name') && (
           <DataTableFacetedFilter
             column={table.getColumn('shorter_name')}
             title="shorter_name"

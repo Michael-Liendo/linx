@@ -2,11 +2,11 @@ import type { LinkSchema } from '@linx/shared';
 import type { ColumnDef } from '@tanstack/react-table';
 
 import type { z } from 'zod';
-import { statuses } from '../data/links';
-import { DataTableColumnHeader } from './data-table-column-header';
-import { DataTableRowActions } from './data-table-row-actions';
-import { Badge } from './ui/badge';
-import { Checkbox } from './ui/checkbox';
+import { statuses } from '../../../data/links';
+import { Badge } from '../../ui/badge';
+import { Checkbox } from '../../ui/checkbox';
+import { DataTableColumnHeader } from './links-table-column-header';
+import { DataTableRowActions } from './linkx-table-row-actions';
 
 export const linksColumns: ColumnDef<z.infer<typeof LinkSchema>>[] = [
   {

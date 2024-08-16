@@ -1,5 +1,5 @@
-import { DataTable } from '@/components/data-table';
-import { linksColumns } from '@/components/links-columns';
+import { linksColumns } from '@/components/datagrids/links/links-columns';
+import { DataTable } from '@/components/datagrids/links/links-table';
 import { MainNav } from '@/components/main-nav';
 import { UserNav } from '@/components/user-nav';
 import { LinkSchema } from '@linx/shared';
