@@ -4,9 +4,9 @@ dotenv.config();
 import cors from '@fastify/cors';
 import Fastify from 'fastify';
 
+import redirect from './controllers/Link/redirect';
 import database from './repository/database';
 import routes from './routes';
-import redirect from './controllers/Link/redirect';
 
 // Instantiate Fastify with some config
 const fastify = Fastify();
