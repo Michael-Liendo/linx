@@ -69,7 +69,7 @@ export const linksColumns: ColumnDef<z.infer<typeof LinkSchema>>[] = [
     cell: ({ row }) => {
       const { toast } = useToast();
 
-      const shorter_url = `${import.meta.env.VITE_API_URL}/api/${row.original.shorter_name}`;
+      const shorter_url = `${import.meta.env.VITE_API_URL}/${row.original.shorter_name}`;
       return (
         <div className="flex items-center space-x-2">
           <Clipboard

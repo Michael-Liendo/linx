@@ -7,7 +7,6 @@ import type {
   FastifyInstance,
   RegisterOptions,
 } from 'fastify';
-import redirect from '../controllers/Link/redirect';
 import type { ErrorWithDetails } from '../utils/errorHandler';
 
 export default function routes(
@@ -37,11 +36,6 @@ export default function routes(
   fastify.register(auth, { prefix: '/auth' });
   fastify.register(user, { prefix: '/user' });
   fastify.register(link, { prefix: '/links' });
-  fastify.route({
-    method: 'GET',
-    url: '/:shorter_name',
-    handler: redirect,
-  });
 
   done();
 }
