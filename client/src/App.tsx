@@ -1,4 +1,5 @@
 import { Routes } from './Routes';
+import { Toaster } from './components/ui/toaster';
 import { AuthProvider } from './context/AuthContext';
 import { LinksProvider } from './context/LinksContext';
 import { ThemeProvider } from './context/ThemeContext';
@@ -13,6 +14,7 @@ function App() {
           </ThemeProvider>
         </LinksProvider>
       </AuthProvider>
+      <Toaster />
     </>
   );
 }

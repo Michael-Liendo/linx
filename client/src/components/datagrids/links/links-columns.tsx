@@ -6,6 +6,9 @@ import type { z } from 'zod';
 import { Checkbox } from '../../ui/checkbox';
 import { DataTableColumnHeader } from './links-table-column-header';
 import { DataTableRowActions } from './linkx-table-row-actions';
+import { copyTextToClipboard } from '@/actions/copyTextToClipboard';
+import { useToast } from '@/components/ui/use-toast';
+import { Clipboard } from 'lucide-react';
 
 export const linksColumns: ColumnDef<z.infer<typeof LinkSchema>>[] = [
   {
@@ -38,11 +41,24 @@ export const linksColumns: ColumnDef<z.infer<typeof LinkSchema>>[] = [
       <DataTableColumnHeader column={column} title="Shorter Name" />
     ),
     cell: ({ row }) => {
+      const { toast } = useToast();
+      const shorter_url = `${import.meta.env.VITE_API_URL}/api/${row.original.shorter_name}`;
       return (
-        <div className="flex space-x-2">
-          <span className="max-w-[500px] truncate font-medium">
-            {row.original.shorter_name}
+        <div className="flex space-x-2 justify-between">
+          <span
+            title={row.original.shorter_name}
+            className="max-w-[500px] truncate font-medium"
+          >
+            <a className="underline text-blue-500" href={shorter_url}>
+              {row.original.shorter_name}
+            </a>
           </span>
+          <Clipboard
+            onClick={() => {
+              copyTextToClipboard(shorter_url);
+              toast({ title: 'Copied to clipboard' });
+            }}
+          />
         </div>
       );
     },
