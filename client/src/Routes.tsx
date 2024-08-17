@@ -4,12 +4,10 @@ import HomeApp from './pages/(app)/Home';
 import Login from './pages/(auth)/Login';
 import Signup from './pages/(auth)/Signup';
 
-export enum PublicRoutesEnum {
-  Home = '/',
-}
+export enum PublicRoutesEnum {}
 
 export enum AuthRoutesEnum {
-  login = '/login',
+  login = '/',
   Signup = '/signup',
   Welcome = '/welcome',
 }
@@ -36,6 +34,7 @@ const PrivateRoutes: JSX.Element[] = [
     path={PrivateRoutesEnum.Home}
     Component={HomeApp}
   />,
+  <Route key={'no-found'} path={'*'} Component={() => <>No Found</>} />,
 ];
 
 const AuthRoutes: JSX.Element[] = [
@@ -51,10 +50,4 @@ const AuthRoutes: JSX.Element[] = [
   />,
 ];
 
-const PublicRoutes = [
-  <Route
-    key={PublicRoutesEnum.Home}
-    path={PublicRoutesEnum.Home}
-    element={<>hello</>}
-  />,
-];
+const PublicRoutes: JSX.Element[] = [];
