@@ -3,12 +3,12 @@ import type { ColumnDef } from '@tanstack/react-table';
 
 import type { z } from 'zod';
 
-import { Checkbox } from '../../ui/checkbox';
-import { DataTableColumnHeader } from './links-table-column-header';
-import { DataTableRowActions } from './linkx-table-row-actions';
 import { copyTextToClipboard } from '@/actions/copyTextToClipboard';
 import { useToast } from '@/components/ui/use-toast';
 import { Clipboard } from 'lucide-react';
+import { Checkbox } from '../../ui/checkbox';
+import { DataTableColumnHeader } from './links-table-column-header';
+import { DataTableRowActions } from './linkx-table-row-actions';
 
 export const linksColumns: ColumnDef<z.infer<typeof LinkSchema>>[] = [
   {
@@ -44,7 +44,14 @@ export const linksColumns: ColumnDef<z.infer<typeof LinkSchema>>[] = [
       const { toast } = useToast();
       const shorter_url = `${import.meta.env.VITE_API_URL}/api/${row.original.shorter_name}`;
       return (
-        <div className="flex space-x-2 justify-between">
+        <div className="flex items-center space-x-2">
+          <Clipboard
+            className="w-4"
+            onClick={() => {
+              copyTextToClipboard(shorter_url);
+              toast({ title: 'Copied to clipboard' });
+            }}
+          />
           <span
             title={row.original.shorter_name}
             className="max-w-[500px] truncate font-medium"
@@ -53,12 +60,6 @@ export const linksColumns: ColumnDef<z.infer<typeof LinkSchema>>[] = [
               {row.original.shorter_name}
             </a>
           </span>
-          <Clipboard
-            onClick={() => {
-              copyTextToClipboard(shorter_url);
-              toast({ title: 'Copied to clipboard' });
-            }}
-          />
         </div>
       );
     },
@@ -72,7 +73,9 @@ export const linksColumns: ColumnDef<z.infer<typeof LinkSchema>>[] = [
       return (
         <div className="flex space-x-2">
           <span className="max-w-[500px] truncate font-medium">
-            {row.original.url}
+            <a className="underline text-blue-500" href={row.original.url}>
+              {row.original.url}
+            </a>
           </span>
         </div>
       );
