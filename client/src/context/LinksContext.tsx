@@ -9,6 +9,7 @@ export interface LinksContextProps {
   isLoading: boolean;
   links: ILink[] | [];
   create: (link: ILinkForCreate) => void;
+  update: (link: ILinkForCreate) => void;
   deleteById: (link_id: string) => void;
 }
 
@@ -45,6 +46,16 @@ export const LinksProvider = ({ children }: { children?: React.ReactNode }) => {
     });
   };
 
+  const update = async (linkDTO: ILinkForCreate) => {
+    const updated_link = await Services.link.update(linkDTO);
+    setLinks((oldLinks) => {
+      const newList = [...oldLinks];
+      const index = newList.findIndex((link) => link.id === updated_link.id);
+      newList[index] = updated_link;
+      return newList;
+    });
+  };
+
   const deleteById = async (id: string) => {
     const link_id = await Services.link.deleteById(id);
 
@@ -61,7 +72,7 @@ export const LinksProvider = ({ children }: { children?: React.ReactNode }) => {
 
   return (
     <LinksContext.Provider
-      value={{ isLoading: loading, links, create, deleteById }}
+      value={{ isLoading: loading, links, create, update, deleteById }}
     >
       {children}
     </LinksContext.Provider>
