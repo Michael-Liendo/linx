@@ -1,11 +1,12 @@
 import Repository from '../repository';
 import { BadRequestError, UnauthorizedError } from '../utils/errorHandler';
 
-import type { ILink, ILinkForCreate } from '@linx/shared';
+import type { ILink, ILinkForCreate, ILinkForUpdate } from '@linx/shared';
 
 export default class Link {
   static async create(link_dto: ILinkForCreate): Promise<ILink> {
     const check = await Repository.link.getByShorterName(link_dto.shorter_name);
+    // todo: improve this
     if (check)
       throw new BadRequestError('Exists the shorter name, please select other');
 
@@ -25,6 +26,28 @@ export default class Link {
     return link;
   }
 
+  static async update(user_id: string, link_dto: ILinkForUpdate) {
+    try {
+      const check = await Repository.link.getById(link_dto.id);
+      if (check.user_id !== user_id)
+        throw new UnauthorizedError('You no are the owner of this link');
+      const check_name = await Repository.link.getByShorterName(
+        link_dto.shorter_name,
+      );
+      // todo: improve this
+      if (check_name)
+        throw new BadRequestError(
+          'Exists the shorter name, please select other',
+        );
+
+      const link = await Repository.link.update(link_dto.id, link_dto);
+
+      return link;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
   static async deleteByIdUser(
     link_id: string,
     user_id: string,

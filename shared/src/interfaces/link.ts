@@ -13,6 +13,12 @@ export interface ILinkForCreate {
   user_id?: string;
 }
 
+export interface ILinkForUpdate {
+  id: string;
+  url: string;
+  shorter_name: string;
+}
+
 export interface ILinkForDelete {
   id: string;
 }

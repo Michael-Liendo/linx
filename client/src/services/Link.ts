@@ -33,6 +33,21 @@ export default class Link {
     }
   }
 
+  static async update(link: ILinkForCreate) {
+    try {
+      const request = await fetch('/links/edit', {
+        method: 'PUT',
+        body: JSON.stringify(link),
+      });
+      const body = await request.json();
+
+      return LinkSchema.parse(body.data.link);
+    } catch (e) {
+      console.log('LinkService', e);
+      throw e;
+    }
+  }
+
   static async deleteById(link_id: string) {
     try {
       const request = await fetch('/links/deleteById', {

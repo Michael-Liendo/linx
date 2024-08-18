@@ -1,7 +1,11 @@
 import create from '../../controllers/Link/create';
 import checkJwt from '../../middlewares/checkJwt';
 
-import { LinkForCreateSchema, LinkForDeleteSchema } from '@linx/shared';
+import {
+  LinkForCreateSchema,
+  LinkForDeleteSchema,
+  LinkForUpdateSchema,
+} from '@linx/shared';
 import requestValidation from '../../utils/requestValidation';
 
 import type {
@@ -9,8 +13,10 @@ import type {
   FastifyInstance,
   RegisterOptions,
 } from 'fastify';
+import { z } from 'zod';
 import deleteById from '../../controllers/Link/delete';
 import getAll from '../../controllers/Link/getAll';
+import update from '../../controllers/Link/update';
 
 export default function link(
   fastify: FastifyInstance,
@@ -30,6 +36,13 @@ export default function link(
     url: '/create',
     preHandler: requestValidation(LinkForCreateSchema),
     handler: create,
+  });
+
+  fastify.route({
+    method: 'PUT',
+    url: '/edit',
+    preHandler: requestValidation(LinkForUpdateSchema),
+    handler: update,
   });
 
   fastify.route({
