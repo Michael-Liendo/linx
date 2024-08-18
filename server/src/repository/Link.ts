@@ -1,6 +1,6 @@
 import database from './database';
 
-import type { ILink, ILinkForCreate } from '@linx/shared';
+import type { ILink, ILinkForCreate, ILinkForUpdate } from '@linx/shared';
 
 export class Link {
   static async create(linkDTO: ILinkForCreate): Promise<ILink> {
@@ -31,6 +31,15 @@ export class Link {
 
     return links;
   }
+
+  static async update(linkId: string, linkDTO: ILinkForUpdate): Promise<ILink> {
+    const [link] = await database<ILink>('links')
+      .update({ ...linkDTO, updated_at: new Date() })
+      .where({ id: linkId })
+      .returning('*');
+    return link;
+  }
+
   static async deleteById(linkId: string): Promise<string> {
     const _link = await database<ILink>('links').where('id', linkId).delete();
     return linkId;
