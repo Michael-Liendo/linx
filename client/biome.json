@@ -11,7 +11,7 @@
         "noUnusedVariables": "warn",
         "useExhaustiveDependencies": "off"
       },
-      "complexity": { "noStaticOnlyClass": "off" }
+      "complexity": { "noStaticOnlyClass": "off", "noForEach": "off" }
     }
   },
   "formatter": {

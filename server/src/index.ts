@@ -4,6 +4,7 @@ dotenv.config();
 import cors from '@fastify/cors';
 import Fastify from 'fastify';
 
+import redirect from './controllers/Link/redirect';
 import database from './repository/database';
 import routes from './routes';
 
@@ -18,6 +19,12 @@ fastify.register(cors, {
 // Declare a route
 fastify.register(routes, {
   prefix: '/api',
+});
+
+fastify.route({
+  method: 'GET',
+  url: '/:shorter_name',
+  handler: redirect,
 });
 
 // check database connection

@@ -19,6 +19,12 @@ export default class Link {
     return links;
   }
 
+  static async getByShorterName(shorter_name: string) {
+    const link = await Repository.link.getByShorterName(shorter_name);
+
+    return link;
+  }
+
   static async deleteByIdUser(
     link_id: string,
     user_id: string,
