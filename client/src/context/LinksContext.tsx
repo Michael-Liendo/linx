@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 
 import useAuth from '@/hooks/useAuth';
-import type { ILink, ILinkForCreate } from '@linx/shared';
+import type { ILink, ILinkForCreate, ILinkForUpdate } from '@linx/shared';
 import { createContext, useEffect, useState } from 'react';
 import Services from '../services';
 
@@ -9,7 +9,7 @@ export interface LinksContextProps {
   isLoading: boolean;
   links: ILink[] | [];
   create: (link: ILinkForCreate) => void;
-  update: (link: ILinkForCreate) => void;
+  update: (link: ILinkForUpdate) => void;
   deleteById: (link_id: string) => void;
 }
 

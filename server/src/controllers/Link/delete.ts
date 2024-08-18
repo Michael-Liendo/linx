@@ -5,7 +5,7 @@ import type { ILinkForDelete } from '@linx/shared';
 import type { Reply, Request } from '../../types';
 
 export default async function deleteByID(request: Request, reply: Reply) {
-  const { id } = request.body as ILinkForDelete;
+  const { id } = request.params as ILinkForDelete;
   const user = request.user;
 
   const link = await Services.link.deleteByIdUser(id, user.id);

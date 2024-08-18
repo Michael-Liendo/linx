@@ -40,15 +40,14 @@ export default function link(
 
   fastify.route({
     method: 'PUT',
-    url: '/edit',
+    url: '/edit/:id',
     preHandler: requestValidation(LinkForUpdateSchema),
     handler: update,
   });
 
   fastify.route({
     method: 'DELETE',
-    url: '/deleteById',
-    preHandler: requestValidation(LinkForDeleteSchema),
+    url: '/deleteById/:id',
     handler: deleteById,
   });
 

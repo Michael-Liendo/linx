@@ -1,7 +1,5 @@
 import Services from '../../services';
-import { BadRequestError } from '../../utils/errorHandler';
 
-import type { ILinkForCreate } from '@linx/shared';
 import type { Reply, Request } from '../../types';
 
 export default async function redirect(request: Request, reply: Reply) {

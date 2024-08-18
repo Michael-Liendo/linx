@@ -2,7 +2,7 @@ import { LinkSchema } from '@linx/shared';
 import { z } from 'zod';
 import fetch from '../utils/fetch';
 
-import type { ILinkForCreate } from '@linx/shared';
+import type { ILinkForCreate, ILinkForUpdate } from '@linx/shared';
 
 export default class Link {
   static async getAll() {
@@ -33,9 +33,9 @@ export default class Link {
     }
   }
 
-  static async update(link: ILinkForCreate) {
+  static async update(link: ILinkForUpdate) {
     try {
-      const request = await fetch('/links/edit', {
+      const request = await fetch(`/links/edit/${link.id}`, {
         method: 'PUT',
         body: JSON.stringify(link),
       });
@@ -50,9 +50,8 @@ export default class Link {
 
   static async deleteById(link_id: string) {
     try {
-      const request = await fetch('/links/deleteById', {
+      const request = await fetch(`/links/deleteById/${link_id}`, {
         method: 'DELETE',
-        body: JSON.stringify({ id: link_id }),
       });
       const body = await request.json();
 
