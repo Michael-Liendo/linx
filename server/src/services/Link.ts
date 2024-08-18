@@ -1,5 +1,9 @@
 import Repository from '../repository';
-import { BadRequestError, UnauthorizedError } from '../utils/errorHandler';
+import {
+  BadRequestError,
+  NotFoundError,
+  UnauthorizedError,
+} from '../utils/errorHandler';
 
 import type { ILink, ILinkForCreate, ILinkForUpdate } from '@linx/shared';
 
@@ -22,6 +26,7 @@ export default class Link {
 
   static async getByShorterName(shorter_name: string) {
     const link = await Repository.link.getByShorterName(shorter_name);
+    if (!link) throw new NotFoundError('Link not found');
 
     return link;
   }

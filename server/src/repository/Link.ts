@@ -11,10 +11,12 @@ export class Link {
     return link;
   }
 
-  static async getByShorterName(shorter_name: string): Promise<ILink> {
-    const [link] = await database<ILink>('links')
+  static async getByShorterName(shorter_name: string): Promise<ILink | null> {
+    const link: ILink | null = await database<ILink>('links')
       .select('*')
-      .where({ shorter_name: shorter_name });
+      .where({ shorter_name: shorter_name })
+      .first();
+
     return link;
   }
 
