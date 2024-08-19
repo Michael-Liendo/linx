@@ -6,7 +6,7 @@
   "main": "src/index.ts",
   "scripts": {
     "start": "node dist/src/index.js",
-    "dev": "ts-node src/index.ts",
+    "dev": "tsx src/index.ts",
     "build": "tsc",
     "knex:migrate:make": "knex migrate:make -x ts",
     "migrations:up": "knex migrate:latest",
@@ -38,6 +38,7 @@
     "jsonwebtoken": "^9.0.2",
     "knex": "^3.0.1",
     "pg": "^8.11.3",
+    "tsx": "^4.17.0",
     "validator": "^13.11.0",
     "zustand": "^4.5.4"
   },
