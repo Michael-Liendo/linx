@@ -2,6 +2,7 @@
   "name": "@linx/server",
   "version": "0.0.1",
   "description": "the server for linx",
+  "type": "module",
   "main": "src/index.ts",
   "scripts": {
     "start": "node dist/src/index.js",
