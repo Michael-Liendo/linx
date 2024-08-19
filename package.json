@@ -6,6 +6,7 @@
     "server:start": "cd server && node dist/src/index.js",
     "build": "npm run build --ws",
     "client:build": "npm run build -w @linx/client",
+    "shared:build": "npm run build -w @linx/shared",
     "server:build": "npm run build -w @linx/server",
     "client:dev": "npm run dev -w @linx/client",
     "server:dev": "npm run dev -w @linx/server",
