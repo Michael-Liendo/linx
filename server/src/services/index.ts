@@ -1,6 +1,6 @@
-import Auth from './Auth';
-import Link from './Link';
-import User from './User';
+import Auth from './Auth.js';
+import Link from './Link.js';
+import User from './User.js';
 
 export default class Services {
   static auth = Auth;

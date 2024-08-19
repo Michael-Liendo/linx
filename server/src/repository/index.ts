@@ -1,5 +1,5 @@
-import { Link } from './Link';
-import { User } from './User';
+import { Link } from './Link.js';
+import { User } from './User.js';
 
 export default class Repository {
   static user = User;

@@ -1,5 +1,5 @@
 import type { IUser } from '@linx/shared';
-import Repository from '../repository';
+import Repository from '../repository/index.js';
 
 export default class User {
   static async getByID(userID: string): Promise<IUser | null> {

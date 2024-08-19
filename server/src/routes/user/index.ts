@@ -1,5 +1,5 @@
-import me from '../../controllers/User/me';
-import checkJwt from '../../middlewares/checkJwt';
+import me from '../../controllers/User/me.js';
+import checkJwt from '../../middlewares/checkJwt.js';
 
 import type { IReply } from '@linx/shared';
 import type {
