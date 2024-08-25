@@ -27,6 +27,9 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: Client Build Check
+        run: npm run client:lint
+
       - name: Shared Build
         run: npm run shared:build
 
