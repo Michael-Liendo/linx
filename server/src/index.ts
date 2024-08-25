@@ -13,7 +13,7 @@ const fastify = Fastify();
 
 // Cors
 fastify.register(cors, {
-  origin: process.env.CORS_ORIGIN.split(',') || '*',
+  origin: process.env?.CORS_ORIGIN?.split(',') || '*',
 });
 
 // Declare a route

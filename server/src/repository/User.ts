@@ -7,8 +7,8 @@ export class User {
    * @param id string
    * @returns string IUser
    */
-  static async getUserByEmail(email: string): Promise<IUser | null> {
-    const user = await database('users').where({ email }).first();
+  static async getUserByEmail(email: string): Promise<IUser | undefined> {
+    const user = await database<IUser>('users').where({ email }).first();
     return user;
   }
 
@@ -17,7 +17,7 @@ export class User {
    * @param id string
    * @returns string IUser
    */
-  static async getUserByID(id: string): Promise<IUser | null> {
+  static async getUserByID(id: string): Promise<IUser | undefined> {
     const user = await database('users').where({ id }).first();
 
     return user;

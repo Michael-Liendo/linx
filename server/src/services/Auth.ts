@@ -2,18 +2,18 @@ import Repository from '../repository/index.js';
 import { BadRequestError, UnauthorizedError } from '../utils/errorHandler.js';
 import { comparePassword, hashPassword } from '../utils/password.js';
 
-import type { IUserForLogin, IUserForRegister } from '@linx/shared';
+import type { IUser, IUserForLogin, IUserForRegister } from '@linx/shared';
 import { Jwt } from '../utils/jwt.js';
 
 export default class Auth {
   static async login(data: IUserForLogin) {
-    const { password, ...user } = await Repository.user.getUserByEmail(
-      data.email,
-    );
+    const user = await Repository.user.getUserByEmail(data.email);
 
     if (!user) {
       throw new UnauthorizedError('UnauthorizedError');
     }
+
+    const { password } = user as Required<IUser>;
 
     const isCorrectPassword = await comparePassword(data.password, password);
 

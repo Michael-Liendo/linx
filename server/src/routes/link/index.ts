@@ -17,7 +17,7 @@ import update from '../../controllers/Link/update.js';
 export default function link(
   fastify: FastifyInstance,
   _: RegisterOptions,
-  done: DoneFuncWithErrOrRes,
+  done: () => void,
 ) {
   fastify.register(checkJwt);
 

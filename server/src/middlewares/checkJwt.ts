@@ -4,12 +4,11 @@ import Services from '../services/index.js';
 import { UnauthorizedError } from '../utils/errorHandler.js';
 import { Jwt } from '../utils/jwt.js';
 
-import type { DoneFuncWithErrOrRes, FastifyInstance } from 'fastify';
+import type { FastifyInstance, FastifyRequest } from 'fastify';
 import type { Request } from '../types/index.js';
 
-function getUser(fastify: FastifyInstance, _, done: DoneFuncWithErrOrRes) {
-  fastify.decorateRequest('user', null);
-
+function getUser(fastify: FastifyInstance, _: unknown, done: () => void) {
+  fastify.decorateRequest('user', undefined);
   fastify.addHook('preHandler', checkJwt);
   done();
 }
@@ -26,9 +25,13 @@ async function checkJwt(request: Request) {
     const payload = Jwt.verifyToken(`${jwt}`);
     const user = await Services.user.getByID(payload.id);
 
+    if (!user) {
+      throw new UnauthorizedError('Access denied');
+    }
+
     request.user = user;
   } catch (error) {
-    throw new UnauthorizedError(error);
+    throw new UnauthorizedError(error as string);
   }
 }
 

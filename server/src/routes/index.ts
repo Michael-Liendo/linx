@@ -12,7 +12,7 @@ import type { ErrorWithDetails } from '../utils/errorHandler.js';
 export default function routes(
   fastify: FastifyInstance,
   _: RegisterOptions,
-  done: DoneFuncWithErrOrRes,
+  done: () => void,
 ) {
   fastify.setErrorHandler((error: ErrorWithDetails, _, reply) => {
     if (error.statusCode >= 500) {

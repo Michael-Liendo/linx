@@ -11,8 +11,10 @@ export class Link {
     return link;
   }
 
-  static async getByShorterName(shorter_name: string): Promise<ILink | null> {
-    const link: ILink | null = await database<ILink>('links')
+  static async getByShorterName(
+    shorter_name: string,
+  ): Promise<ILink | undefined> {
+    const link = await database<ILink>('links')
       .select('*')
       .where({ shorter_name: shorter_name })
       .first();
@@ -20,8 +22,11 @@ export class Link {
     return link;
   }
 
-  static async getById(id: string): Promise<ILink> {
-    const [link] = await database<ILink>('links').select('*').where({ id: id });
+  static async getById(id: string): Promise<ILink | undefined> {
+    const link = await database<ILink>('links')
+      .select('*')
+      .where({ id: id })
+      .first();
     return link;
   }
 

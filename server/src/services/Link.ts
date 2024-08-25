@@ -34,7 +34,7 @@ export default class Link {
   static async update(user_id: string, link_dto: ILinkForUpdate) {
     try {
       const check = await Repository.link.getById(link_dto.id);
-      if (check.user_id !== user_id)
+      if (check?.user_id !== user_id)
         throw new UnauthorizedError('You no are the owner of this link');
       const check_name = await Repository.link.getByShorterName(
         link_dto.shorter_name,
@@ -58,7 +58,7 @@ export default class Link {
     user_id: string,
   ): Promise<string> {
     const check = await Repository.link.getById(link_id);
-    if (check.user_id !== user_id)
+    if (check?.user_id !== user_id)
       throw new UnauthorizedError('You no are the owner of this link');
 
     const deleted_link_id = await Repository.link.deleteById(link_id);
