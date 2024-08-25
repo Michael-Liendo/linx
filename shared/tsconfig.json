@@ -4,9 +4,7 @@
     "declaration": true,
     "module": "Node16",
     "esModuleInterop": true,
-    "outDir": "./dist",
-    "strict": true,
-    "strictNullChecks": true
+    "outDir": "./dist"
   },
   "include": ["src/**/*.ts"]
 }
