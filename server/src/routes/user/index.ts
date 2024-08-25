@@ -1,7 +1,6 @@
 import me from '../../controllers/User/me.js';
 import checkJwt from '../../middlewares/checkJwt.js';
 
-import type { IReply } from '@linx/shared';
 import type {
   DoneFuncWithErrOrRes,
   FastifyInstance,
@@ -11,7 +10,7 @@ import type {
 export default function user(
   fastify: FastifyInstance,
   _: RegisterOptions,
-  done: DoneFuncWithErrOrRes,
+  done: () => void,
 ) {
   fastify.register(checkJwt);
 

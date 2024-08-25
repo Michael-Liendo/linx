@@ -14,7 +14,12 @@ export interface ILinkForCreate {
 }
 
 export interface ILinkForUpdate {
-  id?: string;
+  id: string;
+  url: string;
+  shorter_name: string;
+}
+
+export interface ILinkForUpdateDTO {
   url: string;
   shorter_name: string;
 }

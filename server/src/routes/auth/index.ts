@@ -12,7 +12,7 @@ import requestValidation from '../../utils/requestValidation.js';
 export default function auth(
   fastify: FastifyInstance,
   _: RegisterOptions,
-  done: DoneFuncWithErrOrRes,
+  done: () => void,
 ) {
   fastify.route({
     method: 'POST',
