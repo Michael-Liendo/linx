@@ -7,7 +7,7 @@ export abstract class ErrorWithDetails extends Error {
   ) {
     super(message);
   }
-  abstract statusCode;
+  abstract statusCode: number;
 }
 
 export class BadRequestError extends ErrorWithDetails {
