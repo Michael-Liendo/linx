@@ -22,10 +22,17 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: latest
+          cache: 'npm'
 
       - name: Install Dependencies
         run: npm install
+
+      - name: Server Build Check
+        run: npm run server:lint
+
+      - name: Shared Build
+        run: npm run shared:build
 
       - name: Server Build Check
         env:

@@ -1,5 +1,5 @@
-import login from '../../controllers/Auth/login';
-import register from '../../controllers/Auth/register';
+import login from '../../controllers/Auth/login.js';
+import register from '../../controllers/Auth/register.js';
 
 import { type IReply, UserCreateSchema, UserLoginSchema } from '@linx/shared';
 import type {
@@ -7,7 +7,7 @@ import type {
   FastifyInstance,
   RegisterOptions,
 } from 'fastify';
-import requestValidation from '../../utils/requestValidation';
+import requestValidation from '../../utils/requestValidation.js';
 
 export default function auth(
   fastify: FastifyInstance,

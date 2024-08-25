@@ -1,9 +1,9 @@
-import Repository from '../repository';
+import Repository from '../repository/index.js';
 import {
   BadRequestError,
   NotFoundError,
   UnauthorizedError,
-} from '../utils/errorHandler';
+} from '../utils/errorHandler.js';
 
 import type { ILink, ILinkForCreate, ILinkForUpdate } from '@linx/shared';
 

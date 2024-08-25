@@ -1,13 +1,13 @@
-import auth from './auth';
-import link from './link';
-import user from './user';
+import auth from './auth/index.js';
+import link from './link/index.js';
+import user from './user/index.js';
 
 import type {
   DoneFuncWithErrOrRes,
   FastifyInstance,
   RegisterOptions,
 } from 'fastify';
-import type { ErrorWithDetails } from '../utils/errorHandler';
+import type { ErrorWithDetails } from '../utils/errorHandler.js';
 
 export default function routes(
   fastify: FastifyInstance,

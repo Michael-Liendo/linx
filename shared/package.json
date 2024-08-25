@@ -2,8 +2,13 @@
   "name": "@linx/shared",
   "version": "0.0.1",
   "main": "src/index.ts",
+  "type": "module",
   "author": "Michael Liendo",
   "license": "MIT",
+  "exports": {
+    ".": "./dist/index.js",
+    "./*": "./dist/*"
+  },
   "scripts": {
     "build": "tsc",
     "lint": "biome format ./src && biome check ./src",

@@ -1,11 +1,11 @@
 import validator from 'validator';
 
-import Services from '../../services';
-import { BadRequestError } from '../../utils/errorHandler';
+import Services from '../../services/index.js';
+import { BadRequestError } from '../../utils/errorHandler.js';
 
 import type { IUserForLogin } from '@linx/shared';
 import type { FastifyRequest } from 'fastify';
-import type { Reply } from '../../types';
+import type { Reply } from '../../types/index.js';
 
 export default async function login(request: FastifyRequest, reply: Reply) {
   const { email, password } = request.body as IUserForLogin;

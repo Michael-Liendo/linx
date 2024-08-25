@@ -1,4 +1,4 @@
-import type { Reply, Request } from '../../types';
+import type { Reply, Request } from '../../types/index.js';
 
 export default async function me(request: Request, reply: Reply) {
   const { password, ...user } = request.user;

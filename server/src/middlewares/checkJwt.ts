@@ -1,11 +1,11 @@
 import fastifyPlugin from 'fastify-plugin';
 
-import Services from '../services';
-import { UnauthorizedError } from '../utils/errorHandler';
-import { Jwt } from '../utils/jwt';
+import Services from '../services/index.js';
+import { UnauthorizedError } from '../utils/errorHandler.js';
+import { Jwt } from '../utils/jwt.js';
 
 import type { DoneFuncWithErrOrRes, FastifyInstance } from 'fastify';
-import type { Request } from '../types';
+import type { Request } from '../types/index.js';
 
 function getUser(fastify: FastifyInstance, _, done: DoneFuncWithErrOrRes) {
   fastify.decorateRequest('user', null);
