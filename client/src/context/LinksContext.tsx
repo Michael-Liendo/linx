@@ -1,7 +1,12 @@
 import { useContext } from 'react';
 
 import useAuth from '@/hooks/useAuth';
-import type { ILink, ILinkForCreate, ILinkForUpdate } from '@linx/shared';
+import type {
+  ILink,
+  ILinkForCreate,
+  ILinkForUpdate,
+  ILinkForUpdateDTO,
+} from '@linx/shared';
 import { createContext, useEffect, useState } from 'react';
 import Services from '../services';
 
@@ -9,7 +14,7 @@ export interface LinksContextProps {
   isLoading: boolean;
   links: ILink[] | [];
   create: (link: ILinkForCreate) => void;
-  update: (link: ILinkForUpdate) => void;
+  update: (link: ILinkForUpdateDTO, id: string) => void;
   deleteById: (link_id: string) => void;
 }
 
@@ -46,8 +51,8 @@ export const LinksProvider = ({ children }: { children?: React.ReactNode }) => {
     });
   };
 
-  const update = async (linkDTO: ILinkForCreate) => {
-    const updated_link = await Services.link.update(linkDTO);
+  const update = async (linkDTO: ILinkForUpdateDTO, id: string) => {
+    const updated_link = await Services.link.update(linkDTO, id);
     setLinks((oldLinks) => {
       const newList = [...oldLinks];
       const index = newList.findIndex((link) => link.id === updated_link.id);

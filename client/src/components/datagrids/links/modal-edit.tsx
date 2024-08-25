@@ -26,7 +26,6 @@ export function LinkDialogEdit({
     initialValues: {
       url: link.url,
       shorter_name: link.shorter_name,
-      id: link.id,
     },
     validationSchema: toFormikValidationSchema(LinkForUpdateSchema),
     validateOnChange: false,
@@ -34,7 +33,7 @@ export function LinkDialogEdit({
     onSubmit: async (values) => {
       const dto = LinkForUpdateSchema.parse(values);
 
-      update(dto);
+      update(dto, link.id);
       setIsOpen(false);
     },
   });

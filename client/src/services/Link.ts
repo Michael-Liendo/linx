@@ -2,7 +2,11 @@ import { LinkSchema } from '@linx/shared';
 import { z } from 'zod';
 import fetch from '../utils/fetch';
 
-import type { ILinkForCreate, ILinkForUpdate } from '@linx/shared';
+import type {
+  ILinkForCreate,
+  ILinkForUpdate,
+  ILinkForUpdateDTO,
+} from '@linx/shared';
 
 export default class Link {
   static async getAll() {
@@ -33,9 +37,9 @@ export default class Link {
     }
   }
 
-  static async update(link: ILinkForUpdate) {
+  static async update(link: ILinkForUpdateDTO, id: string) {
     try {
-      const request = await fetch(`/links/edit/${link.id}`, {
+      const request = await fetch(`/links/edit/${id}`, {
         method: 'PUT',
         body: JSON.stringify(link),
       });
