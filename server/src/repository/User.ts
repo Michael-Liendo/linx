@@ -1,5 +1,5 @@
 import type { IUser, IUserForRegister } from '@linx/shared';
-import database from './database.js';
+import database from './database';
 
 export class User {
   /**

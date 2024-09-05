@@ -1,5 +1,5 @@
 import type { ZodObject } from 'zod';
-import type { Reply, Request } from '../types/index.js';
+import type { Reply, Request } from '../types';
 
 // biome-ignore lint/suspicious/noExplicitAny: That is any
 const requestValidation = (schema: ZodObject<any>) => {

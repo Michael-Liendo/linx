@@ -1,8 +1,8 @@
-import create from '../../controllers/Link/create.js';
-import checkJwt from '../../middlewares/checkJwt.js';
+import create from '../../controllers/Link/create';
+import checkJwt from '../../middlewares/checkJwt';
 
 import { LinkForCreateSchema, LinkForUpdateSchema } from '@linx/shared';
-import requestValidation from '../../utils/requestValidation.js';
+import requestValidation from '../../utils/requestValidation';
 
 import type {
   DoneFuncWithErrOrRes,
@@ -10,9 +10,9 @@ import type {
   RegisterOptions,
 } from 'fastify';
 import { z } from 'zod';
-import deleteById from '../../controllers/Link/delete.js';
-import getAll from '../../controllers/Link/getAll.js';
-import update from '../../controllers/Link/update.js';
+import deleteById from '../../controllers/Link/delete';
+import getAll from '../../controllers/Link/getAll';
+import update from '../../controllers/Link/update';
 
 export default function link(
   fastify: FastifyInstance,

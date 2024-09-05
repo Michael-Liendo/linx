@@ -1,5 +1,5 @@
 import type { IUser } from '@linx/shared';
-import type { Reply, Request } from '../../types/index.js';
+import type { Reply, Request } from '../../types';
 
 export default async function me(request: Request, reply: Reply) {
   const { password, ...user } = request.user as IUser;

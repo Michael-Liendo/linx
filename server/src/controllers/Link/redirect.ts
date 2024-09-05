@@ -1,6 +1,6 @@
-import Services from '../../services/index.js';
+import Services from '../../services';
 
-import type { Reply, Request } from '../../types/index.js';
+import type { Reply, Request } from '../../types';
 
 export default async function redirect(request: Request, reply: Reply) {
   const shorter_name = (request.params as { shorter_name: string })

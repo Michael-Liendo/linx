@@ -1,4 +1,4 @@
-import database from './database.js';
+import database from './database';
 
 import type { ILink, ILinkForCreate, ILinkForUpdate } from '@linx/shared';
 

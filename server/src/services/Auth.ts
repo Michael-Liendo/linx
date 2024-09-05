@@ -1,9 +1,9 @@
-import Repository from '../repository/index.js';
-import { BadRequestError, UnauthorizedError } from '../utils/errorHandler.js';
-import { comparePassword, hashPassword } from '../utils/password.js';
+import Repository from '../repository';
+import { BadRequestError, UnauthorizedError } from '../utils/errorHandler';
+import { comparePassword, hashPassword } from '../utils/password';
 
 import type { IUser, IUserForLogin, IUserForRegister } from '@linx/shared';
-import { Jwt } from '../utils/jwt.js';
+import { Jwt } from '../utils/jwt';
 
 export default class Auth {
   static async login(data: IUserForLogin) {

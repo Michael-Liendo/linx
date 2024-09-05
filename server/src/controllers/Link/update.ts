@@ -1,7 +1,7 @@
-import Services from '../../services/index.js';
+import Services from '../../services';
 
 import type { ILinkForUpdate, ILinkForUpdateDTO, IUser } from '@linx/shared';
-import type { Reply, Request } from '../../types/index.js';
+import type { Reply, Request } from '../../types';
 
 export default async function update(request: Request, reply: Reply) {
   const data = request.body as ILinkForUpdateDTO;

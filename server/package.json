@@ -2,7 +2,7 @@
   "name": "@linx/server",
   "version": "0.0.1",
   "description": "the server for linx",
-  "type": "module",
+  "type": "commonjs",
   "main": "src/index.ts",
   "scripts": {
     "start": "NODE_ENV=production node dist/src/index.js",
@@ -19,9 +19,7 @@
     "type": "git",
     "url": "git+ssh://git@github.com/Michael-Liendo/linx.git"
   },
-  "keywords": [
-    "server"
-  ],
+  "keywords": ["server"],
   "author": "Michael Liendo <contact@michaelliendo.com> (https://michaelliendo.com/)",
   "license": "MIT",
   "bugs": {

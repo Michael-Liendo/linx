@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
+    "target": "ES2016",
     "declaration": true,
-    "module": "NodeNext",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "sourceMap": true,
     "strict": true,
     "esModuleInterop": true,
     "outDir": "./dist"
