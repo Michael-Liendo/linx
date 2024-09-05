@@ -9,7 +9,7 @@ function App() {
 		<>
 			<AuthProvider>
 				<LinksProvider>
-					<ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+					<ThemeProvider defaultTheme='dark' storageKey='vite-ui-theme'>
 						<Routes />
 					</ThemeProvider>
 				</LinksProvider>

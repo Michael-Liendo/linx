@@ -36,12 +36,12 @@ export function LinkModalCreate() {
 	return (
 		<Dialog open={isOpen} onOpenChange={setIsOpen}>
 			<DialogTrigger asChild>
-				<Button className="ml-2 h-8 px-2 lg:px-3">
-					<Link1Icon className="mr-2 h-4 w-4" />
+				<Button className='ml-2 h-8 px-2 lg:px-3'>
+					<Link1Icon className='mr-2 h-4 w-4' />
 					Create
 				</Button>
 			</DialogTrigger>
-			<DialogContent className="sm:max-w-[425px]">
+			<DialogContent className='sm:max-w-[425px]'>
 				<DialogHeader>
 					<DialogTitle>Create link</DialogTitle>
 					<DialogDescription>
@@ -49,25 +49,25 @@ export function LinkModalCreate() {
 					</DialogDescription>
 				</DialogHeader>
 				<div>
-					<form id="create-link" className="space-y-4" onSubmit={handleSubmit}>
+					<form id='create-link' className='space-y-4' onSubmit={handleSubmit}>
 						<TextField
-							label="Shorter Name"
-							type="text"
-							id="shorter_name"
-							name="shorter_name"
-							placeholder="linx-short-url"
-							autoComplete="off"
+							label='Shorter Name'
+							type='text'
+							id='shorter_name'
+							name='shorter_name'
+							placeholder='linx-short-url'
+							autoComplete='off'
 							value={values.shorter_name}
 							error={errors.shorter_name}
 							onChange={handleChange}
 							required
 						/>
 						<TextField
-							label="Redirect URL"
-							type="url"
-							id="url"
-							name="url"
-							placeholder="https://example.com/longlonglonglonglonglongurl"
+							label='Redirect URL'
+							type='url'
+							id='url'
+							name='url'
+							placeholder='https://example.com/longlonglonglonglonglongurl'
 							value={values.url}
 							error={errors.url}
 							onChange={handleChange}
@@ -76,7 +76,7 @@ export function LinkModalCreate() {
 					</form>
 				</div>
 				<DialogFooter>
-					<Button form="create-link" type="submit">
+					<Button form='create-link' type='submit'>
 						Create Link
 					</Button>
 				</DialogFooter>

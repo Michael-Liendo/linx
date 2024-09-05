@@ -20,16 +20,16 @@ export const linksColumns: ColumnDef<z.infer<typeof LinkSchema>>[] = [
 					(table.getIsSomePageRowsSelected() && 'indeterminate')
 				}
 				onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-				aria-label="Select all"
-				className="translate-y-[2px]"
+				aria-label='Select all'
+				className='translate-y-[2px]'
 			/>
 		),
 		cell: ({ row }) => (
 			<Checkbox
 				checked={row.getIsSelected()}
 				onCheckedChange={(value) => row.toggleSelected(!!value)}
-				aria-label="Select row"
-				className="translate-y-[2px]"
+				aria-label='Select row'
+				className='translate-y-[2px]'
 			/>
 		),
 		enableSorting: false,
@@ -38,14 +38,14 @@ export const linksColumns: ColumnDef<z.infer<typeof LinkSchema>>[] = [
 	{
 		accessorKey: 'shorter_name',
 		header: ({ column }) => (
-			<DataTableColumnHeader column={column} title="Shorter Name" />
+			<DataTableColumnHeader column={column} title='Shorter Name' />
 		),
 		cell: ({ row }) => {
 			const { toast } = useToast();
 			return (
-				<div className="flex items-center space-x-2">
+				<div className='flex items-center space-x-2'>
 					<Clipboard
-						className="w-4"
+						className='w-4'
 						onClick={() => {
 							copyTextToClipboard(row.original.shorter_name);
 							toast({ title: 'Copied to clipboard' });
@@ -53,7 +53,7 @@ export const linksColumns: ColumnDef<z.infer<typeof LinkSchema>>[] = [
 					/>
 					<span
 						title={row.original.shorter_name}
-						className="max-w-[500px] truncate font-medium"
+						className='max-w-[500px] truncate font-medium'
 					>
 						{row.original.shorter_name}
 					</span>
@@ -64,16 +64,16 @@ export const linksColumns: ColumnDef<z.infer<typeof LinkSchema>>[] = [
 	{
 		accessorKey: 'shorter_url',
 		header: ({ column }) => (
-			<DataTableColumnHeader column={column} title="Shorter URL" />
+			<DataTableColumnHeader column={column} title='Shorter URL' />
 		),
 		cell: ({ row }) => {
 			const { toast } = useToast();
 
 			const shorter_url = `${import.meta.env.VITE_API_URL}/${row.original.shorter_name}`;
 			return (
-				<div className="flex items-center space-x-2">
+				<div className='flex items-center space-x-2'>
 					<Clipboard
-						className="w-4"
+						className='w-4'
 						onClick={() => {
 							copyTextToClipboard(shorter_url);
 							toast({ title: 'Copied to clipboard' });
@@ -81,9 +81,9 @@ export const linksColumns: ColumnDef<z.infer<typeof LinkSchema>>[] = [
 					/>
 					<span
 						title={row.original.shorter_name}
-						className="max-w-[500px] truncate font-medium"
+						className='max-w-[500px] truncate font-medium'
 					>
-						<a className="underline text-blue-500" href={shorter_url}>
+						<a className='underline text-blue-500' href={shorter_url}>
 							{shorter_url}
 						</a>
 					</span>
@@ -94,13 +94,13 @@ export const linksColumns: ColumnDef<z.infer<typeof LinkSchema>>[] = [
 	{
 		accessorKey: 'url',
 		header: ({ column }) => (
-			<DataTableColumnHeader column={column} title="Destination URL" />
+			<DataTableColumnHeader column={column} title='Destination URL' />
 		),
 		cell: ({ row }) => {
 			return (
-				<div className="flex space-x-2">
-					<span className="max-w-[500px] truncate font-medium">
-						<a className="underline text-blue-500" href={row.original.url}>
+				<div className='flex space-x-2'>
+					<span className='max-w-[500px] truncate font-medium'>
+						<a className='underline text-blue-500' href={row.original.url}>
 							{row.original.url}
 						</a>
 					</span>
@@ -111,12 +111,12 @@ export const linksColumns: ColumnDef<z.infer<typeof LinkSchema>>[] = [
 	{
 		accessorKey: 'created_at',
 		header: ({ column }) => (
-			<DataTableColumnHeader column={column} title="Created at" />
+			<DataTableColumnHeader column={column} title='Created at' />
 		),
 		cell: ({ row }) => {
 			return (
-				<div className="flex space-x-2">
-					<span className="max-w-[500px] truncate font-medium">
+				<div className='flex space-x-2'>
+					<span className='max-w-[500px] truncate font-medium'>
 						{row.original.created_at.toLocaleString([], {
 							month: '2-digit',
 							day: '2-digit',
@@ -133,12 +133,12 @@ export const linksColumns: ColumnDef<z.infer<typeof LinkSchema>>[] = [
 	{
 		accessorKey: 'updated_at',
 		header: ({ column }) => (
-			<DataTableColumnHeader column={column} title="Update date" />
+			<DataTableColumnHeader column={column} title='Update date' />
 		),
 		cell: ({ row }) => {
 			return (
-				<div className="flex space-x-2">
-					<span className="max-w-[500px] truncate font-medium">
+				<div className='flex space-x-2'>
+					<span className='max-w-[500px] truncate font-medium'>
 						{row.original.updated_at.toLocaleString([], {
 							month: '2-digit',
 							day: '2-digit',

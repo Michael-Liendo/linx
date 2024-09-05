@@ -20,6 +20,7 @@
 	},
 	"javascript": {
 		"formatter": {
+			"jsxQuoteStyle": "single",
 			"quoteStyle": "single"
 		}
 	}

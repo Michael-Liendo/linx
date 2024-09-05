@@ -32,30 +32,30 @@ export function LinkDialogEdit({
 		},
 	});
 	return (
-		<DialogContent className="sm:max-w-[425px]">
+		<DialogContent className='sm:max-w-[425px]'>
 			<DialogHeader>
 				<DialogTitle>Edit link</DialogTitle>
 			</DialogHeader>
 			<div>
-				<form id="edit-link" className="space-y-4" onSubmit={handleSubmit}>
+				<form id='edit-link' className='space-y-4' onSubmit={handleSubmit}>
 					<TextField
-						label="Shorter Name"
-						type="text"
-						id="shorter_name"
-						name="shorter_name"
-						placeholder="linx-short-url"
-						autoComplete="off"
+						label='Shorter Name'
+						type='text'
+						id='shorter_name'
+						name='shorter_name'
+						placeholder='linx-short-url'
+						autoComplete='off'
 						value={values.shorter_name}
 						error={errors.shorter_name}
 						onChange={handleChange}
 						required
 					/>
 					<TextField
-						label="Redirect URL"
-						type="url"
-						id="url"
-						name="url"
-						placeholder="https://example.com/longlonglonglonglonglongurl"
+						label='Redirect URL'
+						type='url'
+						id='url'
+						name='url'
+						placeholder='https://example.com/longlonglonglonglonglongurl'
 						value={values.url}
 						error={errors.url}
 						onChange={handleChange}
@@ -64,7 +64,7 @@ export function LinkDialogEdit({
 				</form>
 			</div>
 			<DialogFooter>
-				<Button form="edit-link" type="submit">
+				<Button form='edit-link' type='submit'>
 					Edit Link
 				</Button>
 			</DialogFooter>
