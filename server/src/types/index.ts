@@ -1,2 +1,2 @@
-export * from './Reply.js';
-export * from './Request.js';
+export * from './Reply';
+export * from './Request';

@@ -1,1 +1,1 @@
-export * from './checkJwt.js';
+export * from './checkJwt';
