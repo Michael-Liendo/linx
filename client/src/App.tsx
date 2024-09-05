@@ -5,18 +5,18 @@ import { LinksProvider } from './context/LinksContext';
 import { ThemeProvider } from './context/ThemeContext';
 
 function App() {
-  return (
-    <>
-      <AuthProvider>
-        <LinksProvider>
-          <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-            <Routes />
-          </ThemeProvider>
-        </LinksProvider>
-      </AuthProvider>
-      <Toaster />
-    </>
-  );
+	return (
+		<>
+			<AuthProvider>
+				<LinksProvider>
+					<ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+						<Routes />
+					</ThemeProvider>
+				</LinksProvider>
+			</AuthProvider>
+			<Toaster />
+		</>
+	);
 }
 
 export default App;

@@ -3,10 +3,10 @@ import Services from '../../services';
 import type { Reply, Request } from '../../types';
 
 export default async function redirect(request: Request, reply: Reply) {
-  const shorter_name = (request.params as { shorter_name: string })
-    .shorter_name;
+	const shorter_name = (request.params as { shorter_name: string })
+		.shorter_name;
 
-  const link = await Services.link.getByShorterName(shorter_name);
+	const link = await Services.link.getByShorterName(shorter_name);
 
-  return reply.redirect(link.url);
+	return reply.redirect(link.url);
 }
