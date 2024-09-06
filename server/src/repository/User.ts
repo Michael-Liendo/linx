@@ -18,7 +18,7 @@ export class User {
 	 * @returns string IUser
 	 */
 	static async getUserByID(id: string): Promise<IUser | undefined> {
-		const user = await database('users').where({ id }).first();
+		const user = await database<IUser>('users').where({ id }).first();
 
 		return user;
 	}
@@ -29,7 +29,7 @@ export class User {
 	 * @returns string id
 	 */
 	static async createUser(user: IUserForRegister): Promise<string> {
-		const [id] = await database('users').insert(user).returning('id');
-		return id;
+		const [id] = await database<IUser>('users').insert(user).returning('id');
+		return id.id;
 	}
 }

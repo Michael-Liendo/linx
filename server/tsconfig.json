@@ -1,13 +1,13 @@
 {
-  "compilerOptions": {
-    "target": "ES2016",
-    "declaration": true,
-    "module": "CommonJS",
-    "moduleResolution": "node",
-    "sourceMap": true,
-    "strict": true,
-    "esModuleInterop": true,
-    "outDir": "./dist"
-  },
-  "exclude": ["node_modules", "dist"]
+	"compilerOptions": {
+		"target": "ES2016",
+		"declaration": true,
+		"module": "CommonJS",
+		"moduleResolution": "node",
+		"sourceMap": true,
+		"strict": true,
+		"esModuleInterop": true,
+		"outDir": "./dist"
+	},
+	"exclude": ["node_modules", "dist"]
 }
