@@ -11,9 +11,9 @@
 		"migrate:make": "knex migrate:make -x ts",
 		"migrations:up": "knex migrate:latest",
 		"migrations:down": "knex migrate:down",
-		"lint": "biome format ./src && biome check ./src",
-		"format": "biome format --write ./src && biome check --write ./src",
-		"format:unsafe": "biome format --write ./src && biome check --write --unsafe ./src"
+		"lint": "biome format ./ && biome check ./",
+		"format": "biome format --write ./ && biome check --write ./",
+		"format:unsafe": "biome format --write ./ && biome check --write --unsafe ./"
 	},
 	"repository": {
 		"type": "git",

@@ -11,7 +11,7 @@ export default async function redirect(request: Request, reply: Reply) {
 		.shorter_name;
 
 	const link = await Services.link.getByShorterName(shorter_name);
-	const redirect = await Services.redirect.create({
+	const _redirect = await Services.redirect.create({
 		link_id: link.id,
 		ip: request.ip,
 		accept_language: headers['accept-language'],
