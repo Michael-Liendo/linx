@@ -1,8 +1,6 @@
 import type { IUser, IUserForRegister } from '@linx/shared';
 import database from './database';
 
-const Users = database<IUser>('users');
-
 export class User {
 	/**
 	 *  getUserByEmail - get a user with the email
@@ -10,7 +8,7 @@ export class User {
 	 * @returns string IUser
 	 */
 	static async getUserByEmail(email: string): Promise<IUser | undefined> {
-		const user = await Users.where({ email }).first();
+		const user = await database<IUser>('users').where({ email }).first();
 		return user;
 	}
 
@@ -20,7 +18,7 @@ export class User {
 	 * @returns string IUser
 	 */
 	static async getUserByID(id: string): Promise<IUser | undefined> {
-		const user = await Users.where({ id }).first();
+		const user = await database<IUser>('users').where({ id }).first();
 
 		return user;
 	}
@@ -31,8 +29,7 @@ export class User {
 	 * @returns string id
 	 */
 	static async createUser(user: IUserForRegister): Promise<string> {
-		const [id] = await Users.insert(user).select('id');
-
-		return id?.id;
+		const [id] = await database<IUser>('users').insert(user).returning('id');
+		return id.id;
 	}
 }
